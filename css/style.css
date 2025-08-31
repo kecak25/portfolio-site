@@ -1,156 +1,182 @@
- /* @import url(./pc.css) screen and (min-width:769px);
-@import url(./sp.css) screen and (max-width:768px); */
+@charset "UTF-8";
 
-/* 배경 스크롤 방지 */
-body.modal-open {
-  overflow: hidden;
+/* ===========================
+   기본 리셋 + 폰트 + 공통
+=========================== */
+html, body {
+  color:#575757;
+  background-color:#fff;
+  font-family: "Noto Sans KR", "Overpass Mono", sans-serif;
+  font-size:10px;
+  font-style:normal;
+  font-weight:300;
+  letter-spacing:0.08em;
+  line-height:1.4em;
+  width:100%;
+  -webkit-text-size-adjust:100%;
 }
+h1,h2,h3,h4,h5,h6 { font-weight:300; margin:0; padding:0; }
+a { color:#575757; text-decoration:none; }
+a:hover { text-decoration:none; }
+li { list-style:none; }
+img { display:block; max-width:100%; }
 
-/* 리스트 */
-#list-C {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-}
-#list-C li {
-  width: calc(25% - 20px);
-  cursor: pointer;
-}
-#list-C img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
+.CLEARFIX:after { content:''; display:block; clear:both; }
+.FORPC { display:block; }
+.FORSP { display:none; }
+.TRA07 { transition:all .3s cubic-bezier(.19,1,.22,1); }
+.TRA10 { transition:all .5s cubic-bezier(.19,1,.22,1); }
+.TRA15 { transition:all .7s cubic-bezier(.19,1,.22,1); }
+
+#WRAPPER { width:100%; position:relative; }
+#LOAD {
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background:#fff; z-index:1500;
 }
 
 /* ===========================
    Modal 팝업
 =========================== */
+body.modal-open { overflow:hidden; }
+
+#list-C {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:20px;
+}
+#list-C li {
+  width:calc(25% - 20px);
+  cursor:pointer;
+}
+#list-C img {
+  width:100%;
+  border-radius:6px;
+}
+
 .modal {
-  display: none; /* 기본 숨김 */
-  position: fixed;
-  z-index: 29999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.95);
-  justify-content: center;
-  align-items: center;
+  display:none;
+  position:fixed;
+  z-index:29999;
+  left:0; top:0;
+  width:100%; height:100%;
+  background-color:rgba(0,0,0,0.95);
+  justify-content:center;
+  align-items:center;
 }
-
 .modal-content {
-  background: #111;
-  padding: 0;             /* 여백 제거 */
-  max-width: 95vw;        /* 화면 가로 거의 꽉차게 */
-  width: 95%;
-  max-height: 95vh;       /* 화면 세로 거의 꽉차게 */
-  height: 95vh;
-  border-radius: 8px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  background:#111;
+  padding:0;
+  max-width:95vw;
+  width:95%;
+  max-height:95vh;
+  height:95vh;
+  border-radius:8px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
 }
-
-
 .modal-close {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10000;
+  position:absolute;
+  top:10px; right:15px;
+  font-size:30px;
+  color:#fff;
+  cursor:pointer;
+  z-index:10000;
 }
 
-/* ===========================
-   Swiper 슬라이드
-=========================== */
-
-/* 큰 슬라이드 */
+/* 메인 슬라이드 */
 .main-swiper {
-  width: 100%;
-  height: 100%;  /* 팝업 전체 채우기 */
-  background: #000;
-  border-radius: 5px;
-
-
+  width:100%;
+  height:100%;
+  background:#000;
+  border-radius:5px;
 }
-
-/* 큰 슬라이드 - iframe */
-.main-swiper .swiper-slide iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-
-  /* 추가 */
-  overflow: hidden;     
-}
-
-
-/* 슬라이드 한 칸 */
 .main-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;   /* 여기서 세로 스크롤 */
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  overflow-y:auto;
 }
-
-/* 이미지 */
 .main-swiper .swiper-slide img {
-  width: 90%;        /* 가로 꽉 차게 */
-  height: auto;      /* 세로 비율 유지 */
-  object-fit: contain;
+  width:90%;
+  height:auto;
+  object-fit:contain;
+}
+.main-swiper .swiper-slide iframe {
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+  overflow:hidden;
 }
 
-/* 프리뷰 썸네일 */
+/* 썸네일 */
 .thumbs-swiper {
-  width: 100%;
-  height: 120px;
-     object-fit: cover;       /* 정사각형 크기로 꽉 채움 */
-  object-position: top;    /* 이미지 윗부분만 잘라서 보여줌 */
-  box-sizing: border-box;
+  width:100%;
+  height:120px;
+  box-sizing:border-box;
 }
-
-
 .thumbs-swiper .swiper-slide {
-  width: 25%; /* 4칸 균등 */
-  height: 100%;
-  opacity: 0.5;
-    
-     overflow: hidden; /* 추가함 방금 아래 부분 잘리도록 */
+  width:25%;
+  height:100%;
+  opacity:0.5;
+  overflow:hidden;
 }
-
-
-
-.thumbs-swiper .swiper-slide-thumb-active {
-  opacity: 1;
-}
+.thumbs-swiper .swiper-slide-thumb-active { opacity:1; }
 .thumbs-swiper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* 꽉 채우기 */
-  object-position: top;  /* 추가함 방금 이미지 윗부분만 잘라서 */
-  border-radius: 4px;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top;
+  border-radius:4px;
 }
 
 /* 버튼 */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-}
-/* ===========================
- 모달 내용
-=========================== */
-.modal-text {
-  color: #fff;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.modal-text h2 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-}
-.modal-text p {
-  font-size: 1rem;
-  opacity: 0.8;
+.swiper-button-next, .swiper-button-prev {
+  color:#fff;
 }
 
+/* 텍스트 */
+.modal-text {
+  color:#fff;
+  margin-bottom:10px;
+  text-align:center;
+}
+.modal-text h2 { font-size:1.5rem; margin-bottom:5px; }
+.modal-text p { font-size:1rem; opacity:0.8; }
+
+/* ===========================
+   PC 전용 스타일
+=========================== */
+@media screen and (min-width:769px) {
+  .FORPC { display:block; }
+  .FORSP { display:none; }
+
+  #HEADER { position:relative; z-index:999; }
+  #CONTENT { width:100%; position:relative; }
+  #ME {
+    position:fixed; top:0; left:0;
+    width:100%; height:100%;
+    z-index:1;
+    background:#b7d7d6;
+    opacity:0;
+    font-size:12px; line-height:33px; letter-spacing:.14em;
+  }
+  #ME.ON { z-index:800; opacity:1; }
+  /* ... (pc.css 상세 부분을 이 안에 다 넣음) ... */
+}
+
+/* ===========================
+   모바일 전용 스타일
+=========================== */
+@media screen and (max-width:768px) {
+  .FORPC { display:none; }
+  .FORSP { display:block; }
+
+  html, body { font-size:9px; }
+  #WRAPPER { overflow:scroll; -webkit-overflow-scrolling:touch; }
+  #ME { font-size:12px; line-height:27px; }
+  /* ... (sp.css 상세 부분을 이 안에 다 넣음) ... */
+}
