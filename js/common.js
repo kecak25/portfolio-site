@@ -48,26 +48,29 @@ function LOGO_AREA() {
   $("#TOP").css("margin-top", wh / 2 - 40);
 }
 
-// 리스트 hover 효과 0831
+// 리스트 hover / touch 효과
 function LIST_HOVER() {
   if (_ua.Mobile) {
-    // 모바일은 hover 이벤트가 없으므로,
-    // 페이지 로드 시 리스트에 순차적으로 ON 클래스 부여
-    $(".JS-LIST_HOVER li").each(function (i) {
-      setTimeout(() => {
-        $(this).addClass("ON");
-      }, i * 200); // 0.2초 간격으로 하나씩 나타나게
+    //  모바일: hover 대신 touch 이벤트 사용
+    $(".JS-LIST_HOVER li img").on("touchstart", function () {
+      const o = $(this);
+      const s = o.parents("li").attr("list");
+      $("#WRAPPER").removeClass().addClass(`${s} ON`);
+      o.parents("li").addClass("ON");
+    });
+
+    $(".JS-LIST_HOVER li img").on("touchend touchcancel", function () {
+      $("#WRAPPER").removeClass("ON");
+      $(this).parents("li").removeClass("ON");
     });
   } else {
-    // PC는 기존 hover 방식 유지
+    //  PC: 기존 hover 이벤트 그대로
     $(".JS-LIST_HOVER li img").hover(
       function () {
         const o = $(this);
         const s = o.parents("li").attr("list");
-        setTimeout(() => {
-          $("#WRAPPER").removeClass().addClass(`${s} ON`);
-          o.parents("li").addClass("ON");
-        }, 10);
+        $("#WRAPPER").removeClass().addClass(`${s} ON`);
+        o.parents("li").addClass("ON");
       },
       function () {
         $("#WRAPPER").removeClass("ON");
