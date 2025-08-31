@@ -9,25 +9,19 @@ let portfolio_num,
     _kiri = false,
     _this;
 
-// 디바이스 체크
+// 디바이스 체크 (UA + viewport 폭 병합)
 const _ua = (() => {
   const ua = window.navigator.userAgent.toLowerCase();
   return {
-    Tablet: (ua.includes("windows") && ua.includes("touch") && !ua.includes("tablet pc")) ||
-            ua.includes("ipad") ||
-            (ua.includes("android") && !ua.includes("mobile")) ||
-            (ua.includes("firefox") && ua.includes("tablet")) ||
-            ua.includes("kindle") || ua.includes("silk") || ua.includes("playbook"),
-    Mobile: (ua.includes("windows") && ua.includes("phone")) ||
-            ua.includes("iphone") || ua.includes("ipod") ||
-            (ua.includes("android") && ua.includes("mobile")) ||
-            (ua.includes("firefox") && ua.includes("mobile")) ||
-            ua.includes("blackberry")
+    Mobile: (ua.includes("iphone") || ua.includes("ipod") || ua.includes("android") && ua.includes("mobile") ||
+             ua.includes("firefox") && ua.includes("mobile") || ua.includes("blackberry")) ||
+             window.innerWidth <= 768
   };
 })();
 
 // 스크롤 위치 계산
 function SCROLL_POSITION() {
+  elePos = []; // 중복 초기화 방지
   $("#TOP .LIST .SC").each(function () {
     elePos.push($(this).position().top);
   });
@@ -54,29 +48,60 @@ function LOGO_AREA() {
   $("#TOP").css("margin-top", wh / 2 - 40);
 }
 
-// 리스트 hover 효과
+// 리스트 hover 효과 0831
 function LIST_HOVER() {
-  $(".JS-LIST_HOVER li img").hover(
-    function () {
-      const o = $(this);
-      const s = o.parents("li").attr("list");
+  if (_ua.Mobile) {
+    // 모바일은 hover 이벤트가 없으므로,
+    // 페이지 로드 시 리스트에 순차적으로 ON 클래스 부여
+    $(".JS-LIST_HOVER li").each(function (i) {
       setTimeout(() => {
-        $("#WRAPPER").removeClass().addClass(`${s} ON`);
-        o.parents("li").addClass("ON");
-      }, 10);
-    },
-    function () {
-      $("#WRAPPER").removeClass("ON");
-      $(this).parents("li").removeClass("ON");
-    }
-  );
+        $(this).addClass("ON");
+      }, i * 200); // 0.2초 간격으로 하나씩 나타나게
+    });
+  } else {
+    // PC는 기존 hover 방식 유지
+    $(".JS-LIST_HOVER li img").hover(
+      function () {
+        const o = $(this);
+        const s = o.parents("li").attr("list");
+        setTimeout(() => {
+          $("#WRAPPER").removeClass().addClass(`${s} ON`);
+          o.parents("li").addClass("ON");
+        }, 10);
+      },
+      function () {
+        $("#WRAPPER").removeClass("ON");
+        $(this).parents("li").removeClass("ON");
+      }
+    );
+  }
 }
+
+
+// 공통 스크롤 핸들러
+const handleScroll = (o) => {
+  if (o > logo_fade) {
+    $("#LOGO_AREA, #LOGO_AREA2, #HEADER, #FOTTER").addClass("ON");
+    $("body").addClass("TOP_CHANGE");
+  } else {
+    $("#LOGO_AREA, #LOGO_AREA2, #HEADER, #FOTTER").removeClass("ON");
+    $("body").removeClass("TOP_CHANGE");
+  }
+};
 
 $(function () {
   LOGO_AREA();
   LIST_HOVER();
   TO_TOP();
-  $("#WRAPPER").height(wh);
+
+  // wrapper 높이는 min-height로만 보장 (강제 height 제거)
+  //$("#WRAPPER").css("min-height", wh);
+    
+    if (!_ua.Mobile && window.innerWidth > 768) {
+  $("#WRAPPER").height(wh); // PC 전용으로만 적용 0831
+}
+
+    
 
   // 페이지 로드 완료
   $(window).on("load", function () {
@@ -196,51 +221,55 @@ $(function () {
     });
   });
 
- // 스크롤 이벤트 (모바일/데스크탑 분기)
-const handleScroll = (o) => {
-  if (o > logo_fade) {
-    $("#LOGO_AREA, #LOGO_AREA2, #HEADER, #FOTTER").addClass("ON");
-    $("body").addClass("TOP_CHANGE");
-  } else if (o === 0 || logo_fade >= o) {
-    $("#LOGO_AREA, #LOGO_AREA2, #HEADER, #FOTTER").removeClass("ON");
-    $("body").removeClass("TOP_CHANGE");
+  // 스크롤 이벤트 (폭 기준 모바일 대응)
+  if (_ua.Mobile) {
+    $("#WRAPPER").on("scroll", function () {
+      const o = $(this).scrollTop();
+      const s = nowPositionY - o;
+      nowPositionY = o;
+
+      handleScroll(o);
+
+      if (s > 0 && o < elePos[num - 1] + 122) {
+        if (_kiri) {
+          $("#WRAPPER").removeClass().addClass(`ON ${$(".JS-LIST_HOVER li:nth-child(" + num + ")").attr("list")}`);
+        } else _kiri = true;
+        if (num > 1) num--;
+      } else if (o > elePos[num - 1]) {
+        if (!_kiri) {
+          $("#WRAPPER").removeClass().addClass(`ON ${$(".JS-LIST_HOVER li:nth-child(" + num + ")").attr("list")}`);
+        } else _kiri = false;
+        if (portfolio_num > num) num++;
+      }
+    });
+  } else {
+    $(window).on("scroll", function () {
+      handleScroll($(this).scrollTop());
+    });
   }
-};
-
-if (_ua.Mobile) {
-  $("#WRAPPER").on("scroll", function () {
-    const o = $(this).scrollTop();
-    const s = nowPositionY - o;
-    nowPositionY = o;
-
-    handleScroll(o);
-
-    if (s > 0 && o < elePos[num - 1] + 122) {
-      if (_kiri) {
-        $("#WRAPPER").removeClass().addClass(`ON ${$(".JS-LIST_HOVER li:nth-child(" + num + ")").attr("list")}`);
-      } else _kiri = true;
-      if (num > 1) num--;
-    } else if (o > elePos[num - 1]) {
-      if (!_kiri) {
-        $("#WRAPPER").removeClass().addClass(`ON ${$(".JS-LIST_HOVER li:nth-child(" + num + ")").attr("list")}`);
-      } else _kiri = false;
-      if (portfolio_num > num) num++;
-    }
-  });
-} else {
-  $(window).on("scroll", function () {
-    handleScroll($(this).scrollTop());
-  });
-}
-
 
   // 리사이즈
-  $(window).resize(function () {
-    wh = $(window).height();
-    LOGO_AREA();
-    CHANGE_BAR();
-    $("#WRAPPER").height(wh);
-  });
+ // $(window).resize(function () {
+  //  wh = $(window).height();
+   // LOGO_AREA();
+   // CHANGE_BAR();
+   // $("#WRAPPER").css("min-height", wh);
+ // });
+    
+    //0831수정
+    $(window).resize(function () {
+  wh = $(window).height();
+  LOGO_AREA();
+  CHANGE_BAR();
+
+  if (!_ua.Mobile && window.innerWidth > 768) {
+    // PC 전용일 때만 강제
+    $("#WRAPPER").css("min-height", wh);
+  } else {
+    // 모바일은 CSS 미디어쿼리에 맡기기
+    $("#WRAPPER").css("min-height", ""); 
+  }
+});
 
   // 모바일 touch 대응
   if (_ua.Mobile) {
