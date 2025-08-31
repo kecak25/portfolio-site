@@ -197,7 +197,7 @@ body.modal-open {
   #HEADER .ME {
     position: fixed; top: 22px; right: 17px;
     width: 8px; height: 18px;
-    background: url("../img/btn_me.svg") no-repeat center / 8px 18px;
+    background: url("./img/btn_me.svg") no-repeat center / 8px 18px;
     opacity: 0;
   }
   #HEADER.ON .ME,
@@ -222,7 +222,7 @@ body.modal-open {
   #ME .BTN_CLOSE {
     position: absolute; top: 20px; left: 22px;
     width: 18px; height: 18px;
-    background: url("../img/btn_close_me.png") no-repeat center / 18px;
+    background: url("./img/btn_close_me.png") no-repeat center / 18px;
     opacity: 0; cursor: pointer;
   }
   #ME.ON .BTN_CLOSE { opacity: 1; }
@@ -277,17 +277,17 @@ body.modal-open {
   .ON #FIX_AREA_H::after,
   .CHILD #FIX_AREA_H::after { opacity: 0; }
 
-  /* 프로젝트별 배경 */
-  .P1 #FIX_AREA_H { background-image: url("../img/pic_p1_kv.jpg"); }
-  .P2 #FIX_AREA_H { background-image: url("../img/ui/milk.jpg"); }
-  .P3 #FIX_AREA_H { background-image: url("../img/ui/OWL.jpg"); }
-  .P4 #FIX_AREA_H { background-image: url("../img/evt/wemade2.jpg"); }
-  .P5 #FIX_AREA_H { background-image: url("../img/illust/volvo1.jpg"); }
-  .P6 #FIX_AREA_H { background-image: url("../img/html5/iphone3.jpg"); }
-  .P7 #FIX_AREA_H { background-image: url("../img/html5/han1.jpg"); }
-  .P8 #FIX_AREA_H { background-image: url("../img/html5/suz.jpg"); }
-  .P15 #FIX_AREA_H { background-image: url("../img/evt/lin15.jpg"); }
-  .P16 #FIX_AREA_H { background-image: url("../img/ui/gregory_page.jpg"); background-position: 0 40px; }
+  /* 프로젝트별 배경 
+  .P1 #FIX_AREA_H { background-image: url("./img/pic_p1_kv.jpg"); }
+  .P2 #FIX_AREA_H { background-image: url("./img/ui/milk.jpg"); }
+  .P3 #FIX_AREA_H { background-image: url("./img/ui/OWL.jpg"); }
+  .P4 #FIX_AREA_H { background-image: url("./img/evt/wemade2.jpg"); }
+  .P5 #FIX_AREA_H { background-image: url("./img/illust/volvo1.jpg"); }
+  .P6 #FIX_AREA_H { background-image: url("./img/html5/iphone3.jpg"); }
+  .P7 #FIX_AREA_H { background-image: url("./img/html5/han1.jpg"); }
+  .P8 #FIX_AREA_H { background-image: url("./img/html5/suz.jpg"); }
+  .P15 #FIX_AREA_H { background-image: url("./img/evt/lin15.jpg"); }
+  .P16 #FIX_AREA_H { background-image: url("./img/ui/gregory_page.jpg"); background-position: 0 40px; } */
 }
 
 /* =======================
@@ -396,7 +396,7 @@ body.modal-open {
 
   #ME .BTN_CLOSE {
     width:18px; height:18px;
-    background:url("../img/btn_close_me.png") no-repeat center/18px 18px;
+    background:url("./img/btn_close_me.png") no-repeat center/18px 18px;
     position:fixed;
     top:22px; right:18px;
     z-index:999;
