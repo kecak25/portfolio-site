@@ -51,36 +51,21 @@ function LOGO_AREA() {
 // 리스트 hover / touch 효과
 function LIST_HOVER() {
   if (_ua.Mobile) {
-    let tapped = null; // 마지막 터치한 요소 기억
-
-    $(".JS-LIST_HOVER li a").on("touchstart", function (e) {
-      const li = $(this).parents("li");
+    // 모바일은 hover 효과 빼고 바로 클릭만 되도록
+    $("#TOP .LIST li a.PJAX").on("click", function () {
+      const li = $(this).closest("li");
       const s = li.attr("list");
 
-      if (tapped === this) {
-        // 두 번째 터치 → 링크 실행 허용
-        tapped = null; // 초기화
-        return true;   // a.PJAX 기본 클릭 실행됨
-      } else {
-        // 첫 번째 터치 → hover 효과만
-        e.preventDefault(); // 기본 클릭 막음
-        tapped = this;      // 이 요소 기억
+      // 터치 시 hover 효과도 같이 줄 수 있음 (선택사항)
+      $("#WRAPPER").removeClass().addClass(`${s} ON`);
+      li.addClass("ON");
 
-        // 기존 hover 효과처럼 처리
-        $("#WRAPPER").removeClass().addClass(`${s} ON`);
-        li.addClass("ON");
-
-        // 일정 시간(예: 1.2초) 지나면 hover 풀림 + 다시 처음처럼
-        setTimeout(() => {
-          tapped = null;
-          $("#WRAPPER").removeClass("ON");
-          li.removeClass("ON");
-        }, 1200);
-      }
+      // 클릭은 그대로 pjax에 전달 → 페이지 열림
+      return true;
     });
   } else {
-    // PC: 기존 hover 유지
-    $(".JS-LIST_HOVER li img").hover(
+    // PC는 hover 그대로
+    $("#TOP .LIST li img").hover(
       function () {
         const o = $(this);
         const s = o.parents("li").attr("list");
