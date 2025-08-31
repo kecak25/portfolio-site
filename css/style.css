@@ -1,12 +1,13 @@
- @charset "UTF-8";
+
+@charset "UTF-8";
+
 
 /* ===========================
- pc
+   pc
 =========================== */
-@media (min-width:769px) {
+@media screen {
+    
  
-
-
 /* 기본 세팅 */
 html, body {
   color: #575757;
@@ -270,7 +271,7 @@ img { display: block; }
 #TOP .LIST > LI.ON { opacity: 1 !important; }
 #TOP .LIST > LI.OFF { opacity: 1 !important; }
 
-   
+
     
     
     
@@ -278,15 +279,16 @@ img { display: block; }
 
 
 /* ===========================
-  모바일
+   mobile
 =========================== */
-@media screen and (max-width: 768px),
-       screen and (max-device-width: 768px) {
- 
+@media screen  {
+    
+    
+
 
 html, body {
   color:#575757;
-  background: #fff !important; /*background-color:#fff;0831s*/
+  background-color:#fff;
  
   font-size:10px;
   font-style:normal;
@@ -322,15 +324,7 @@ input, textarea {
 .TRA10 { transition:all 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000); }
 .TRA15 { transition:all 1500ms cubic-bezier(0.190, 1.000, 0.220, 1.000); }
 
-/* #WRAPPER { width:100%; !important; min-height:100vh;!important; overflow:scroll; -webkit-overflow-scrolling:touch; } /* min-height:100vh; 0831 추가 */
-    #WRAPPER {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 100vh !important;
-    overflow: visible !important;
-  }
-           
-           
+#WRAPPER { width:100%; overflow:scroll; -webkit-overflow-scrolling:touch; }
 .NOSCROLL #WRAPPER { overflow:hidden; }
 
 #LOAD {
@@ -379,7 +373,7 @@ input, textarea {
 
 #ME {
   width:100%;
-  min-height:100vh; /*height:100%; 0831*/
+  height:100%;
   position:relative;
   top:0; left:0;
   z-index:1;
@@ -409,16 +403,6 @@ input, textarea {
 }
 #ME.ON .BTN_CLOSE { opacity:1; }
 #ME .BTN_CLOSE a { display:block; width:100%; height:100%; }
-           
-     /*********추가0831*********/      
-   #ME .LEFT,
-  #ME .RIGHT {
-    float: none !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 auto 30px auto !important;
-  
-  }
 
 #ME .LEFT { margin:0 17px 50px 17px; padding-top:30px; }
 #ME .LEFT p span { width:51px; display:inline-block; }
@@ -460,47 +444,21 @@ input, textarea {
   content:"";
   width:100%; height:100%;
   position:absolute; top:0; left:0;
-  background-color:transparent; /*fff수정0831 */
+  background-color:#fff;
   transition:all 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 .ON #FIX_AREA_H:after, .CHILD #FIX_AREA_H:after { opacity:0; }
 
 /* 이하 구조 동일 — 중복 최적화만 반영 */
     
-    /********추가**************/
-           
-            /* 리스트 배치만 세로로, 애니메이션 속성은 그대로 */
-  #TOP .LIST > LI {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 20px 0 !important;
-    opacity: 1 !important;                /* 애니메이션 초기 상태 */
-    transition: all 0.5s ease;  /* PC와 동일한 트랜지션 */
-  }
-
-  #TOP .LIST > LI.ON {
-    opacity: 1 !important;      /* ON 클래스가 붙으면 나타남 */
-  }
-           
-    /* 로고 위치 단순화 */
-  #LOGO_AREA,
-  #LOGO_AREA2 {
-    left: 0 !important;
-    width: 100% !important;
-  }
-
-  /* DETAIL 영역은 아래쪽으로 자연스럽게 */
-  #DETAIL {
-    position: relative !important;
-    margin-top: 20px !important;
-  }
-       
+    
     
 }
 
 /* ===========================
-  공통 스타일
+   공통페이지
 =========================== */
+
 
 /* 배경 스크롤 방지 */
 body.modal-open {
