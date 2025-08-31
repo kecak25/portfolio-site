@@ -1,0 +1,39 @@
+
+@charset "utf-8";
+
+/* 사회공헌 */
+.cont_wrap	{}
+.cont_wrap .h_desc	{margin-top:38px}
+.cont_wrap .top	{padding-bottom:40px; border-bottom:1px solid #e1e1e1;}
+.cont_wrap .top .img	{display:block; margin-top:15px; font-size:0; line-height:0}
+
+.cont_wrap .cont_info	{overflow:hidden; height:1%; padding:34px 0 25px 0; border-bottom:1px solid #e1e1e1; color:#262626}
+.cont_wrap .cont_info .fl_left	{width:474px}
+.cont_wrap .cont_info .fl_right	{width:474px}
+
+.cont_wrap .cont_info .num	{font-size:11px; font-weight:bold; line-height:22px}
+.cont_wrap .cont_info h3	{margin-top:2px; font-size:18px; line-height:30px}
+.cont_wrap .cont_info .info_txt	{margin-top:9px; font-size:14px; line-height:24px; word-spacing:0;}
+.cont_wrap .cont_info .img_warp	{overflow:hidden; height:1%; padding-top:15px;}
+.cont_wrap .cont_info .img_warp .fl_left	{width:241px}
+.cont_wrap .cont_info .img_warp .fl_right	{width:229px}
+.cont_wrap .cont_info .img_warp .img	{display:block; font-size:0; line-height:0}
+.cont_wrap .cont_info .img_warp p	{margin-top:4px; color:#a6a6a6; font-size:14px; line-height:24px}
+
+.cont_wrap .cont_info.column_1 .fl_right .info_txt	{margin-top:62px;} /* 150130_수정 */
+.cont_wrap .cont_info.column_1 .img_warp	{clear:both;}
+.cont_wrap .cont_info.column_1 .img_warp .fl_left	{width:474px}
+.cont_wrap .cont_info.column_1 .img_warp .fl_right	{width:474px}
+
+.t_01	{padding-top:39px !important}
+.t_02	{padding-top:63px !important}
+
+.cont_history	{margin-top:44px}
+.cont_history .img	{display:block; font-size:0; line-height:0}
+.cont_history h3	{margin:44px 0 14px 10px; font-size:18px; line-heighty:26px}
+.cont_history .table_wrap.cont	{width:717px}
+.cont_history .table_wrap.cont table	{width:100%; border-bottom: 1px solid #262626;}
+.cont_history .table_wrap.cont table tbody tr th	{border-bottom:0; font-weight:bold; text-align:left}
+.cont_history .table_wrap.cont table tbody tr td	{padding:0 0 0 10px; border-left:0; border-bottom:0; text-align:left}
+.cont_history .table_wrap.cont table tbody tr td span	{display:block; padding:8px 0 8px 0; border-top:1px solid #f3f3f3}
+.cont_history .table_wrap.cont table tbody tr:first-child	td span	{border-top:0}

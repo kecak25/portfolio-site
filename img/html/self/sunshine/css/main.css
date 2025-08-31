@@ -1,0 +1,122 @@
+@media all and (min-width:320px) and (max-width:767px){
+.main_bg{ width:100%; height:130px; background:url(../img/main01.jpg) center right no-repeat;
+			background-size:cover; min-width:320px;}/*최소한의 빈공백을 줄여준다?*/
+.sub_img{ width:100%; margin:10px auto;}			
+.sub_img div{ width:94%; margin:3%; border:#ddd solid 1px;
+				} 
+.sub_img div:hover{border:#000 1px solid;}
+.sub_img h3{ padding:7px 5px; color:#333;}
+.sub_img p{ font-size:13px; color:#666; padding:3px 5px 10px; line-height:20px;}
+/*bar*/
+.news{ width:100%; height:50px; line-height:50px; background:#ddd; clear:both;}
+.news h3,.news p{float:left; margin-left:15px;}
+.news p{ font-size:13px; color:#036;}
+/*bar ed*/
+#clear{ clear:both;}
+
+/*게시판전체*/
+.noice{  width:100%; margin:auto; clear:both;}
+.noice div{  border:#000 1px solid; box-sizing:border-box; 
+padding:10px 0;
+ position:relative;  margin:10px auto;}
+.noice div p{ position:absolute; top:10px; right:10px; font-size:12px;}
+.noice div p a{color:#F00;}
+.noice div p a:hover{ text-decoration:overline;}
+.noice h4{ width:120px; border-top:#333 solid 3px; margin: 10px;}
+
+/*공지사항*/
+.notice{width:94%; line-height:20px; color:#333;}
+
+/*갤러리*/
+.gallery{width:94%;}
+.gallery:after{content:""; clear:both; display:block;}
+.notice ul,.gallery ul{ width:100%; margin-left:25px;}
+.gallery li{float:left; width:40%; margin:1%; }
+.gallery li:hover{ opacity:0.7; cursor:pointer;}
+#customer{ padding:0; border:none; display:none; }
+
+.site_map{clear:both; width:100%; background:#ddd; padding:30px 0; min-width:320px;}/*위아래모양*/
+.site_map:after{content:""; clear:both; display:block;}/*배경색이 필요한데 높이값안쓸때*/
+.site_map>ul{ width:96%; margin-left:8%;}/*↑공간을 합해 전체 가운데 정렬*/
+.site_map>ul>li{ float:left; width:32%; font-weight:bold; line-height:20px; margin-bottom:10px;}/*좌측정렬된 글과 보다큰 넓은 공간*/
+.site_map ul li ul{ font-weight:normal; font-size:13px;}
+.site_map ul li ul a{color:#666;}
+.site_map ul li ul a:hover{color:#000; text-decoration:underline;}
+}
+
+@media all and (min-width:768px) and (max-width:1024px) {
+.main_bg{ width:100%; height:400px; background:url(../img/main01.jpg) center right no-repeat;
+			background-size:cover; min-width:768px;}
+.sub_img{ width:630px; margin:20px auto;}			
+.sub_img div{ width:300px; margin:5px; border:#ddd solid 1px;
+				float:left; margin-bottom:20px;} 
+.sub_img div:hover{border:#000 1px solid;}
+.sub_img h3{ padding:7px 5px; color:#333;}
+.sub_img p{ font-size:13px; color:#666; padding:3px 5px 10px; line-height:20px;}
+/*bar*/
+.news{ width:100%; height:50px; line-height:50px; background:#ddd; clear:both;}
+.news h3,.news p{float:left; margin-left:30px;}
+.news p{ font-size:13px; color:#036;}
+/*bar ed*/
+
+.noice{margin:20px auto; clear:both; width:756px;}/*m:30 p:20 n:180 g:300 c:200 border:6 1152*/
+.noice div{float:left; margin:5px; border:#000 1px solid; padding:10px; position:relative; margin-bottom:20px;}
+.noice div p{ position:absolute; top:10px; right:10px; font-size:12px;}
+.noice div p a{color:#F00;}
+.noice div p a:hover{ text-decoration:overline;}
+.noice h4{ width:120px; border-top:#333 solid 3px; padding:5px;}
+
+.notice{width:180px; line-height:20px; color:#333;}/*라인하이트로 height높이조절*/
+.notice li{margin:4.2px;}
+.gallery{width:300px; padding:10px;}
+.gallery li{float:left; width:140px; margin:5px;}
+.gallery li:hover{ opacity:0.7; cursor:pointer;}
+#customer{ padding:0; border:none;}
+#customer img{ width:200px;}
+
+.site_map{clear:both; width:100%; background:#ddd; padding:30px 0; min-width:768px;}/*위아래모양*/
+.site_map:after{content:""; clear:both; display:block;}/*배경색이 필요한데 높이값안쓸때*/
+.site_map>ul{ width:500px; margin:auto;}/*↑공간을 합해 전체 가운데 정렬*/
+.site_map>ul>li{ float:left; width:100px; font-weight:bold; line-height:20px;}/*좌측정렬된 글과 보다큰 넓은 공간*/
+.site_map ul li ul{ font-weight:normal; font-size:13px;}
+.site_map ul li ul a{color:#666;}
+.site_map ul li ul a:hover{color:#000; text-decoration:underline;}
+}
+
+@media all and (min-width:1025px) {
+.main_bg{ width:100%; height:600px; background:url(../img/main01.jpg) center right no-repeat;
+			background-size:auto; min-width:1000px;}/*최소한의 빈공백을 줄여준다?*/
+.sub_img{ width:1008px; margin:20px auto;}			
+.sub_img div{ width:240px; margin:5px; border:#ddd solid 1px;
+				float:left; margin-bottom:20px;} 
+.sub_img div:hover{border:#000 1px solid;}
+.sub_img h3{ padding:7px 5px; color:#333;}
+.sub_img p{ font-size:13px; color:#666; padding:3px 5px 10px; line-height:20px;}
+/*bar*/
+.news{ width:100%; height:50px; line-height:50px; background:#ddd; clear:both;}
+.news h3,.news p{float:left; margin-left:30px;}
+.news p{ font-size:13px; color:#036;}
+/*bar ed*/
+
+.noice{margin:20px auto; clear:both; width:1135px;}/*m:30 p:40 n:230 g:620 c:228 1152*/
+.noice div{float:left; margin:5px; border:#000 1px solid; padding:10px; position:relative; margin-bottom:20px;}
+.noice div p{ position:absolute; top:10px; right:10px; font-size:12px;}
+.noice div p a{color:#F00;}
+.noice div p a:hover{ text-decoration:overline;}
+.noice h4{ width:120px; border-top:#333 solid 3px; padding:5px;}
+
+.notice{width:230px; line-height:20px; color:#333;}/*라인하이트로 height높이조절*/
+.notice li{margin:4.2px;}
+.gallery{width:600px; padding:10px;}
+.gallery li{float:left; width:140px; margin:5px;}
+.gallery li:hover{ opacity:0.7; cursor:pointer;}
+#customer{ padding:0; border:none;}
+
+.site_map{clear:both; width:100%; background:#ddd; padding:30px 0; min-width:1000px;}/*위아래모양*/
+.site_map:after{content:""; clear:both; display:block;}/*배경색이 필요한데 높이값안쓸때*/
+.site_map>ul{ width:1000px; margin:auto;}/*↑공간을 합해 전체 가운데 정렬*/
+.site_map>ul>li{ float:left; width:200px; font-weight:bold; line-height:20px;}/*좌측정렬된 글과 보다큰 넓은 공간*/
+.site_map ul li ul{ font-weight:normal; font-size:13px;}
+.site_map ul li ul a{color:#666;}
+.site_map ul li ul a:hover{color:#000; text-decoration:underline;}
+}

@@ -1,0 +1,508 @@
+
+/**
+ * get Radio Object Value
+ *
+ * @param radioObj object
+ * @return String
+ */
+function getRadioValue(radioObj)
+{
+	if (radioObj == null) return "";
+
+	if (radioObj.length != null)
+	{
+		for(i=0; i<radioObj.length; i++)
+		{
+			if (radioObj[i].checked) return radioObj[i].value;
+		}
+	}
+	else
+	{
+		if (radioObj.checked) return radioObj.value;
+	}
+
+	return "";
+}
+
+
+/**
+ * 셀렉트 박스의 옵션항목을 모두 지운다.
+ */
+function clearSelect(obj) {
+	for(var i=obj.length-1;i>-1;i--) {
+		obj.options[i] = null;
+	}
+}
+
+/**
+ * 입력된 값의 , 를 삭제한다.
+ * ex) currency_to_number('1,234,567') ==> '1234567' 리턴
+ * 
+ * @param currency
+ * @returns
+ */
+function currency_to_number(currency) { 
+  var num = currency;
+
+	if( num == "" || num == null) {
+		return 0;
+	}
+
+  re = /^\$|,/g; 
+  num = num.replace(re, ""); 
+
+	return num;
+}
+
+/**
+ * 숫자만 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyNumber()">
+ */
+function onlyNumber(){
+    if(event.keyCode == 9 && event.keyCode == 8 && event.keyCode == 46)
+    {
+        event.returnValue=true;
+    }
+	if(!(event.keyCode==48||event.keyCode==49||event.keyCode==50||
+	  event.keyCode==51||event.keyCode==52||event.keyCode==53||event.keyCode==54||event.keyCode==55||
+	  event.keyCode==56||event.keyCode==57))  
+	{
+		event.returnValue=false;
+	}
+}
+
+/**
+ * 숫자만 입력 가능하게 처리 - onKeyDown의 한글문제
+ * <input type='text' name='some' onkeyup="onlyNumberOnKeyUp(this)">
+ */
+function onlyNumberOnKeyUp(obj){
+	return;
+	
+	if( 95< parseInt(event.keyCode) && parseInt(event.keyCode)<106 )
+    {
+        event.returnValue=true;
+        return;
+    }
+    if(event.keyCode == 9 || event.keyCode == 8 || event.keyCode == 46)
+    {
+        event.returnValue=true;
+        return;
+    }
+	if(!(event.keyCode==48||event.keyCode==49||event.keyCode==50||
+	  event.keyCode==51||event.keyCode==52||event.keyCode==53||event.keyCode==54||event.keyCode==55||
+	  event.keyCode==56||event.keyCode==57))  
+	{
+		alert('숫자만 입력할 수 있습니다.');
+		//obj.value = obj.value.substr(0,obj.value.length-1);
+		obj.value = '';
+		event.returnValue=false;
+	}
+}
+
+/**
+ * 숫자만 입력 가능하게 처리
+ * <input type='text' name='some' style='IME-MODE:disabled;' onKeyDown='onOnlyNumber(this);'>
+ */
+function onOnlyNumber(obj) {
+	for(var i = 0; i < obj.value.length ; i++) {
+		chr = obj.value.substr(i,1);  
+		chr = escape(chr);
+		key_eg = chr.charAt(1);
+		
+		if (key_eg == 'u') {
+			key_num = chr.substr(i,(chr.length-1));   
+			
+			if((key_num < "AC00") || (key_num > "D7A3")) { 
+				event.returnValue = false;
+			}
+		}
+	}
+	
+	// 8 : 백스페이스
+	// 9 : Tab
+	// 35 : End
+	// 36 : Home
+	// 37 : 화살표 <-
+	// 39 : 화살표 ->
+	// 45 : Insert
+	// 46 : Delete
+	// 144 : NumLock
+	if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) 
+			|| event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 35 || event.keyCode == 36
+			|| event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 45 || event.keyCode == 46
+			|| event.keyCode == 144) {  
+	} else {
+		event.returnValue = false;
+	}
+}
+
+/**
+ * 입력된 값에 찬단위 , 를 추가한다
+ * ex) to_currency('1234567') ==> '1,234,567' 리턴
+ * 
+ * @param currency
+ * @returns
+ */
+function to_currency(amt) { 
+  var num = amt;
+
+
+	if( num == "") {
+		return "";
+	}
+
+  re = /^\$|,/g; 
+  num = num.replace(re, ""); 
+
+	if( num.indexOf(".") > 0 ) {
+		num = num.substr(0, num.indexOf("."));
+	}
+
+  if( isNaN(num) ) { 
+    alert("문자는 사용할 수 없습니다.");
+    return "";
+  } 
+
+  if(amt.length >= 4) {
+    fl="" 
+    if( num == 0 )  return num;
+    if( num < 0 ) { 
+      num = num * -1; 
+      fl = "-";
+    }
+    else { 
+      num = num * 1;
+    } 
+    num = new String(num);
+    temp = "";
+    co = 3;
+    num_len = num.length;
+
+    while( num_len > 0 ) { 
+      num_len = num_len - co;
+      if( num_len < 0 ) {
+        co = num_len + co;
+        num_len = 0;
+      } 
+      temp = "," + num.substr(num_len,co) + temp;
+    } 
+       
+    return fl + temp.substr(1);
+  }
+  
+  return num;
+} 
+
+/**
+ * 글자수 제한이 존재하는경우 글자수를 체크한다.
+ */
+function strLength(str) {
+    var len = str.length;
+    var mbytes = 0;
+    var i = 0;
+
+    for (; i<len; i++) {
+        var c = str.charCodeAt(i);
+        if (c > 128) mbytes++;
+    }
+
+    return (len-mbytes) + (mbytes*2);
+}
+
+/**
+ * 발리데이션 통과 문자열(해당항목 체크하고 맨 마지막에 호출.. 다른것이 남아있는 상태에서 체크하면 엄한키가 막힐수 있음)
+ * 발리데이션 제외키 처리
+ * 이동키, shift + 이동키, 탭, shift + tab, ctrl + x, NumLock, 한영전환키(ie9이후버전에서만됨)
+ * <input type='text' name='some' onKeyDown="onlyPassStr(e)">
+ */
+function onlyPassStr(e, msg) {
+	var charCode = null;
+	var key = null;
+	var evt = null;
+	var isValid = true;
+	try {
+		if(e) {
+			charCode = e.keyCode;
+			key = (e.key)?e.key:null;
+
+			if(charCode == 45 // insert 
+					||charCode == 46  // delete
+					||charCode == 36  // home
+					||charCode == 35  // end
+					||charCode == 8   // backspace  
+					||charCode == 9   // tab
+					||charCode == 16  // shift
+					||charCode == 37  // "<-"
+					||charCode == 39  // "->"
+					||charCode == 144 // NumLock
+			) {
+				isValid = true;
+				
+			} else if(e.shiftKey) { // 특수문자 방지
+				isValid = false;
+			} else if (e.ctrlKey) {
+				if(charCode == 88) { // 잘라내기
+					isValid = true;
+				} else {
+					isValid = false;				}
+				
+			} else if(charCode == 229) {
+				if((key && key =="KanaMode") // ie8이전에선 안먹힘// 한영전환
+				) {
+					isValid = true;
+				} else {
+					isValid = false;
+				}
+
+			} else {
+				isValid = false;
+			}
+			// 키입력 금지된 상태에서 뿌려줄 메세지가 존재하면 메세지처리함
+//			console.log("isValid:" + (isValid));
+			if(!isValid) {
+				e.preventDefault();
+				e.returnValue = false;
+				if(msg) {
+					var value = e.srcElement.value;
+					if(value.length == 0) {
+						window.setTimeout("alert('"+msg+"')", 100);
+					}
+				}
+			}
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+
+/**
+ * 숫자만 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyNumber()">
+ */
+function onlyNumberWithPassKey(e){
+	var charCode = null;
+	var evt = null;
+	try {
+		if(e) {
+			charCode = e.keyCode;
+			
+			if ((charCode > 47 && charCode < 58) // 상단 키패드 
+					|| (charCode > 95 && charCode < 106) // 우측키패드
+					) {
+				e.returnValue = true;
+			} else {
+				onlyPassStr(e); // 발리데이션 제외키 처리
+			}
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+/**
+ * 숫자만 입력 가능하게 처리(소수점허용)
+ * <input type='text' name='some' onKeyDown="onlyNumber()">
+ */
+function onlyNumberWithDot(e){
+	var charCode = null;
+	var evt = null;
+	var value = null;
+	
+	try {
+		if(e) {
+			value = e.srcElement.value;
+//			console.log(value);
+			
+			charCode = e.keyCode;
+//			console.log(charCode);
+			
+			if ((charCode > 47 && charCode < 58) // 상단 키패드 
+					|| (charCode > 95 && charCode < 106) // 우측키패드
+					) {
+				e.returnValue = true;
+			} else if(charCode == 190) {// dot(".")
+				if( value.indexOf(".") > 0 ) { // 소수점은 허용하는데; 두개찍지 말도록
+					e.preventDefault();
+					e.returnValue = false;
+				} else {
+					e.returnValue = true;
+				}
+			} else {
+				onlyPassStr(e); // 발리데이션 제외키 처리
+			}
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+/**
+ * 영문만 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyAlphabets()">
+ */
+function onlyAlphabets(e) {
+	var charCode = null;
+	var key = null;
+	var evt = null;
+	try {
+		if(e) {
+			charCode = e.keyCode;
+			key = (e.key)?e.key:null;
+//			console.log("charCode:"+charCode+",key:"+key);
+
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)) {
+				e.returnValue = true;
+			} else if(charCode == 32 ) { // space바 허용
+			} else {
+				onlyPassStr(e, "영문만 입력가능합니다."); // 발리데이션 제외키 처리
+			}
+
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+/**
+ * 지정된 날자형식으로 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyFormatedDateEvt(event, ".")">
+ * 현재 구분자는 ".", "-" 만 처리해놨음.. 필요하면 추가해야함
+ */
+function onlyFormatedDateEvt(e, delimeter) {
+
+	var charCode = null;
+	var evt = null;
+	var delimeterCode1 = null;
+	var delimeterCode2 = null;
+	if(delimeter == "." ) { // "."은 숫자판에 있는거랑 자판에 있는거랑 키코드가 다름;;
+		delimeterCode1 = 190; // 자판
+		delimeterCode2 = 110; // 숫자판
+	} else if(delimeter == "-" ) {
+		delimeterCode1 = 189;
+		delimeterCode2 = 189;
+	}
+	try {
+		if(e) {
+			charCode = e.keyCode;
+			
+			if ((charCode > 47 && charCode < 58) // 상단 키패드 
+					|| (charCode > 95 && charCode < 106) // 우측키패드
+					|| (charCode == delimeterCode1) // 구분문자(".:190,-:189")
+					|| (charCode == delimeterCode2) // 구분문자(".:190,-:189")
+					) {
+				e.returnValue = true;
+			} else {
+				onlyPassStr(e); // 발리데이션 제외키 처리
+			}
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+/**
+ * 지정된 날자형식으로 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyFormatedDate(this, ".")">
+ */
+function onlyFormatedDate(obj, delimeter) {
+	var objVal = obj.value;
+
+	var regExp = eval("/^((19\\d{2}|20\\d{2})"+delimeter+"(0[1-9]|1[0-2])"+delimeter+"(0[1-9]|[1-2][0-9]|3[0-1]))$/");
+	
+	// 지정된 형식에 어긋나면
+	if(!regExp.test(objVal)) {
+		alert("날자형식이 잘못됐습니다. 'YYYY.MM.DD' 형식으로 입력하세요 ");
+		obj.value = "";
+		window.setTimeout("document.getElementById('"+obj.id+"').focus()", 100);
+	}
+}
+
+
+
+/**
+ * 입력된 form의 모든 항목을 request url에 param으로 전달할 문자열로 생성한다.
+ * 
+ * @param obj
+ * @returns {String}
+ */
+function makeFormToParam(obj) {
+	var getstr = "";
+
+	for (i=0; i<obj.getElementsByTagName("input").length; i++) {
+		if(obj.getElementsByTagName("input")[i].name=='')
+			continue;
+		if (obj.getElementsByTagName("input")[i].type == "text" || obj.getElementsByTagName("input")[i].type == "hidden") {
+			getstr += obj.getElementsByTagName("input")[i].name + "=" + encodeURIComponent(encodeURIComponent(obj.getElementsByTagName("input")[i].value)) + "&";
+		}
+		else if (obj.getElementsByTagName("input")[i].type == "checkbox") {
+			if (obj.getElementsByTagName("input")[i].checked) {
+				getstr += obj.getElementsByTagName("input")[i].name + "=" + obj.getElementsByTagName("input")[i].value + "&";
+			} else {
+				getstr += obj.getElementsByTagName("input")[i].name + "=&";
+			}
+		}
+		if (obj.getElementsByTagName("input")[i].type == "radio") {
+			if (obj.getElementsByTagName("input")[i].checked) {
+				getstr += obj.getElementsByTagName("input")[i].name + "=" + obj.getElementsByTagName("input")[i].value + "&";
+			}
+		}  
+	}
+	
+	for (i=0; i<obj.getElementsByTagName("select").length; i++) {
+		var sel = obj.getElementsByTagName("select")[i];
+		getstr += sel.name + "=" + sel.options[sel.selectedIndex].value + "&";
+	}
+
+	return getstr;
+}
+
+
+/**
+ * 알파멧과 숫자만 입력 가능하게 처리
+ * <input type='text' name='some' onKeyDown="onlyNumber()">
+ */
+function onlyAlphaNumberWithPassKey(e){
+	var charCode = null;
+	var evt = null;
+	try {
+		if(e) {
+			charCode = e.keyCode;
+
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)) {
+				e.returnValue = true;
+			} else if ((charCode > 47 && charCode < 58) // 상단 키패드 
+					|| (charCode > 95 && charCode < 106) // 우측키패드
+					) {
+				e.returnValue = true;
+			} else {
+				onlyPassStr(e); // 발리데이션 제외키 처리
+			}
+		}
+	}
+	catch (err) {
+		
+	}
+}
+
+/**
+ * 알파멧과 숫자, 특수문자만 입력 가능하게 처리(비밀번호항목에서사용)
+ * <input type='text' name='some' onKeyDown="onlyNumber()">
+ */
+/**
+ * 영문 또는 숫자, 특수문자인지 체크
+ * @param ele ( value 값 )
+ */
+function isAlphanumericSpecialKey(ele){
+	if(ele == "") return true;
+	
+    var elevalue = ele;
+    var pattern=/^([a-zA-Z0-9('~','!','@','#','$','%','^','&','*','(',')','_')]+)$/; // +, =, -는 특수문자에 포함?? 일단 뺌
+    return (pattern.test(elevalue)) ? true : false;
+}
+

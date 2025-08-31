@@ -1,0 +1,27 @@
+footer{ width:100%; background:#fff;
+		padding:50px 0; clear:both;}
+footer:after{content:""; clear:both; display:block;}
+footer>div{width:1200px; margin:auto;}
+footer>div>div{ float:left; width:300px;  margin-right:150px;}
+footer h2{ margin-bottom:30px;}
+footer ul{margin-bottom:100px;}
+footer ul li{ margin-bottom: 7px;
+				font-size:14px;}
+footer ul li a{ color:#999;}
+#bold_margin{ font-weight:bold; font-size:15px;
+				margin:20px 0;}
+#bold_margin a{ color:#eee;}
+
+footer h3{ color:#999; margin-bottom:30px; 
+			font-size:14px;}
+address{ font-style:normal; color:#999; line-height:20px; margin-bottom:30px;}
+.footer_p{ color:#999; font-size:14px; line-height:20px;}
+#copy{ margin:20px 0 100px;}
+.contact{color:#ddd; margin-right:0;}
+.contact div{height:70px; }
+footer h4{margin-bottom:20px;}
+#border_tb{ border-bottom:#ccc solid 1px; border-top:#ccc solid 1px; padding:10px 0; margin:10px 0;}
+.contact h5{ font-size:15px; float:left;}
+.contact h6{font-size:20px; float:right;}
+.contact p{float:right; clear:both; font-size:12px; line-height:20px;}
+.contact>p{ margin-top:40px; font-size:14px; float:left;}

@@ -1,0 +1,89 @@
+
+@media all and (max-width:767px){
+.pc{ display:none;}
+h1{ display:none;}
+
+.mobile{ width:100%; height:50px; background:#000;}
+.mo_ul{ width:90%; margin:0 auto; position:relative;}
+
+.mobile_scroll{ width:100%; height:50px; background:#000; top:0; position:fixed; z-index:500;}
+
+.mo_menu{width:100%; height:100%; background:#000; 
+         position:fixed;
+         left:0; top:50px; z-index:200; 
+		 padding-top:30px;
+         display:none;}
+.mo_menu li{ width:80%; height:60px; line-height:60px; border-bottom:#333 solid 1px;
+             font-size:1em; margin:0 auto;}		   
+.mo_menu li a{ color:#ddd; display:block;}
+.mo_menu li a:hover{ opacity:0.7;}
+
+		   
+.top_left{ background:url(../img/menu-mobile.png)0 0 no-repeat;
+		   width:16px; height:16px;
+		   cursor:pointer;
+		   position:absolute; top:20px; left:20px;
+		   transition:all 0.5s;
+		   transform:rotate(0deg);
+		   -webkit-transform:rotate(0deg);
+		   -moz-transform:rotate(0deg);
+		   -ms-transform:rotate(0deg);
+		   -o-transform:rotate(0deg);
+		   }
+		   
+.sub{ background-position: 0 -16px;
+	  transform: rotate(-180deg);
+	  -webkit-transform: rotate(-180deg);
+	  -moz-transform: rotate(-180deg);
+	  -ms-transform: rotate(-180deg);
+	  -o-transform: rotate(-180deg);
+	}
+		   
+.top_right{ position:absolute; right:20px; top:10px; cursor:pointer;
+             transition:1s;
+			-wekit-transition:all 1s;}
+.top_r_ani{position:absolute; top:10px; right:-100px;
+			transition:1s;
+			-wekit-transition:all 1s; }
+		   		   
+.logo{ position:absolute; left:50%; margin-left:-10px; top:15px;}	 
+.logo:hover,.top_right:hover{ opacity:0.7;}   
+}
+ 
+ 
+@media all and (min-width:768px) and (max-width:1024px) {
+.mobile{ display:none;}	 
+h1{ display:none;}
+.pc{ width:100%; height:50px; background:#000;}
+.pc ul{ width:990px; margin:0 auto; background:#9C0;}
+.pc ul li{ float:left; width:110px; height:50px; line-height:50px;
+           text-align:center;}
+.pc ul li a{ color:#FFF; display:block; font-size:13px;
+             transition:all 0.5s;
+			 
+			 -wibkit-transition:all 0.5s;
+			 -ms-transition:all 0.5s;
+			 -moz-transition:all 0.5s;
+			 -o-transition:all 0.5s;
+			 }
+			 
+.pc ul li a:hover{ opacity:0.7;}   
+}
+
+@media all and (min-width:1025px) {
+.mobile{ display:none;}	
+h1{ display:none;}
+.pc{ width:100%; height:50px; background:#000;}
+.pc ul{ width:990px; margin:0 auto; background:#9C0;}
+.pc ul li{ float:left; width:110px; height:50px; line-height:50px;
+           text-align:center;}
+.pc ul li a{ color:#FFF; display:block; font-size:13px;
+             transition:all 0.5s;
+			 
+			 -wibkit-transition:all 0.5s;
+			 -ms-transition:all 0.5s;
+			 -moz-transition:all 0.5s;
+			 -o-transition:all 0.5s;
+			 }
+			 
+.pc ul li a:hover{ opacity:0.7;}		  } 

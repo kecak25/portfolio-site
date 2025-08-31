@@ -1,0 +1,42 @@
+.wrap{ width:1280px; margin:auto;
+		border-left:#CCC solid 1px; border-right:#CCC solid 1px; 
+		position:relative; }
+.wrap:after,section:after{ content:""; clear:both; display:block; }
+
+header, section{ float:left; }
+
+.sns{ position:absolute; bottom:80px; left:50px;   }
+
+
+header{ width:180px;  padding:30px 30px 30px 50px; }
+
+header h1{ margin-left:10px;  margin-bottom: 100px;  }
+
+section{ padding:30px; width:960px; margin:auto; box-shadow:#CCC 1px 0 3px inset; 
+ 		}
+
+
+nav>ul{ margin-bottom:300px; }
+
+nav>ul>li{ width:150px; line-height:40px; border-top:#999 solid 1px;  display:block; }
+nav>ul>li:first-child{ border-top:none; }
+nav>ul>li>a{ color:#333; font-size:17px; font-weight:bold; }
+
+
+/*nav>ul>li:hover .sub{ display:block; }*/
+
+.sub{ margin-bottom:50px; display:none; }
+
+.sub:hover{ border-top:#333 solid 1px; }
+
+nav ul li ul li{ font-size:14px; line-height:30px; }
+nav ul li ul li a{ color:#666; font-weight:bold;  }
+nav ul li ul li a:hover{ color:#F00; }
+
+.family_site h5{ font-family:'Nanum Myeongjo', serif; font-style:italic; color:#999; 
+		border-bottom:#666 solid 1px; height:30px; font-size:16px; text-indent:15px; }
+		
+		
+.family_site ul li{ line-height:25px; font-size:14px; }
+.family_site ul li a{ color:#666; }
+

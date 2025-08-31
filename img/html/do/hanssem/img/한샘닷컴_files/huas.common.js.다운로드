@@ -1,0 +1,1005 @@
+/**
+ * Description : common scripts for huas.
+ * Author : Minho Park.
+ * Remark : some functions, not used, will remove.
+ **************************************************************************
+ * DATE			: Author		: Desc. 
+ **************************************************************************
+ * 2014.04.03	: Minho Park	: for first edition.
+ * 2014.04.07	: Minho Park	: functions for DB connect had been moved to huas.data.js
+ **************************************************************************
+ */
+var common = function() {};
+
+/**
+ * 해당 항목이 필수 항목인지 체크함.
+ * @param obj
+ * @param msg
+ * @returns {Boolean}
+ */
+common.required = function (obj, msg) {
+	try {
+		if ( jQuery.trim(obj.value) == "" ) {
+			obj.focus();
+			popup.message(msg);
+			return false;
+		}
+	} catch (e) {
+		alert(e);
+	}  
+	
+	return true;
+};
+
+/**
+ * JSON으로 된 Data를 form에 보여준다.
+ * @param frm
+ * @param data
+ */
+common.setFormData = function (frm, data) {
+	for ( id in data ) {
+		try {
+			frm[id].value = data[id];
+		} catch (exception) {
+		}
+	}
+}
+
+/**
+ * HTML Combo에 JSON data를 받아서 , combo list를 정의한다.
+ * @param obj
+ * @param data
+ * @param choose
+ * @param added
+ */
+ common.setOptionValues = function (obj, data, choose, added, selectdata ) {
+	if ( !added ) {
+		try {
+			while( 0 < obj.length){
+				obj.remove(0);
+			}		
+		} catch (exception) {}
+	}
+
+	if ( data == undefined || data.length == 0 ) {
+		var option = document.createElement("option");
+		option.text = "선택";
+		option.value = "";
+		obj.add(option);		
+		return;
+	}
+	var jsonData = jQuery.parseJSON(data);
+
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "선택";
+		option.value = "";
+		obj.add(option);
+	}
+
+	if ( jsonData == null ) jsonData = data;
+	for ( var iCnt = 0; iCnt < jsonData.length; iCnt++) {
+		var option = document.createElement("option");
+		option.text = jsonData[iCnt].TEXT;
+		option.value = jsonData[iCnt].CODE;
+
+		if( selectdata == jsonData[iCnt].CODE ){
+			option.selected = true;
+		}
+		obj.add(option);
+	}
+};
+
+/**
+ * 화면에 날짜 형식 field를 만들어 준다.
+ * @param id
+ * @param value
+ */
+common.setDateField = function (input, value) {
+	var $input = $(input);
+//	$input = $("<INPUT style='width:90px; ' id='" + id + "' type='text' value='" + value + "'/>");
+	$input.datepicker({
+		showOn : "focus",
+//		buttonImageOnly : true,
+//		buttonImage : "/images/icon/calendar_icon.gif",
+		beforeShow : function() { calendarOpen = true },
+		onClose : function() { calendarOpen = false },
+		dateFormat : "yy/mm/dd"
+	});
+	$input.val(value);
+	$input.width($input.width() - 18);
+};
+
+/**
+ * - 으로 구분된 전화번호를 3개의 object에 표기한다.
+ * @param obj1
+ * @param obj2
+ * @param obj3
+ * @param value
+ */
+common.splitTelNo = function(obj1, obj2, obj3, value) {
+	if ( value == "" ) return;
+	obj1.value = value.substring(0, value.indexOf("-"));
+	value = value.substring(value.indexOf("-") + 1);
+	obj2.value = value.substring(0, value.indexOf("-"));
+	value = value.substring(value.indexOf("-") + 1);
+	obj3.value = value.substring(0, value.length);
+}
+
+/**
+ * 날짜값을 3개의 object에 표기한다. ( 8자리/ 10자리 자동구분 )
+ * @param obj1
+ * @param obj2
+ * @param obj3
+ * @param value
+ */
+common.splitDate = function(obj1, obj2, obj3, value) {
+	if ( !value || value == "") return;
+	
+	if ( value.length() == 10 ) {
+		obj1.value = value.substring(0, 4);
+		obj2.value = eval(value.substring(5, 7));
+		obj3.value = eval(value.substring(8, 10));
+	} else if ( value.length() == 8 ) {
+		obj1.value = value.substring(0, 4);
+		obj2.value = eval(value.substring(4, 6));
+		obj3.value = eval(value.substring(6, 8));
+	} 
+}
+
+/**
+ * 값이 숫자로만 되어있는지 체크
+ * @param chkStr
+ * @returns {Boolean}
+ */
+common.isNumberCheck = function (chkStr) {
+	var numberCase = "0123456789";
+	var iCheckCnt = 0;
+
+	for (var iCnt = 0; iCnt < chkStr.length; iCnt++) {
+		if ( numberCase.indexOf(chkStr.substring(iCnt, iCnt+1)) == -1 ) {
+			iCheckCnt++;
+		}
+	}
+
+	if ( iCheckCnt == 0 || iCheckCnt == chkStr.length) {
+		return false;
+	}
+
+	return true;
+};
+
+/**
+ * 년도 값을 가진 select 에 option list로 만들어 추가한다.
+ * @param obj
+ * @param choose
+ */
+common.setYearList = function (obj, choose) {
+
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "= Choose =";
+		option.value = "";
+		obj.add(option);
+	}
+
+	for ( var iCnt = 2010; iCnt <= 2025; iCnt++) {
+		var option = document.createElement("option");
+		option.text = iCnt;
+		option.value = iCnt;
+		obj.add(option);
+	}
+	
+	if ( choose == false) {
+		var toDay = new Date();
+		obj.value = toDay.getYear() + 1900;
+	}
+};
+
+/**
+ * 월 (month) data를 select 에 option list로 만들어 추가한다.
+ * @param obj
+ * @param choose
+ */
+common.setMonthList = function (obj, choose) {
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "= Choose =";
+		option.value = "";
+		obj.add(option);
+	}
+
+	for ( var iCnt = 1; iCnt <= 12; iCnt++) {
+		var option = document.createElement("option");
+		option.text = iCnt;
+		option.value = iCnt;
+		obj.add(option);
+	}
+
+	if ( choose == false) {
+		var toDay = new Date();
+		obj.value = toDay.getMonth() + 1;
+	}
+};
+
+/**
+ * 일 (day) Data를 select 에 option list로 만들어 추가한다.
+ * @param obj
+ * @param iYear
+ * @param iMonth
+ * @param choose
+ */
+common.setDayList = function (obj, iYear, iMonth, choose) {
+	for ( var iCnt = 0; iCnt < 31; iCnt++) {
+		obj.remove(0);
+	}
+
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "= Choose =";
+		option.value = "";
+		obj.add(option);
+	}
+
+	iYear = eval(iYear);
+	iMonth = eval(iMonth);
+	var iLastDay = 0;
+
+	// 마지막 날짜계산
+	switch (iMonth) {
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+		// 1, 3, 5, 7, 8, 10, 11 은 31일
+			iLastDay = 31;
+			break;
+		default : 
+		// 2월이 아니면 30일 ( 4, 6, 9, 11 )
+			if ( iMonth != 2 ) {
+				iLastDay = 30;
+				break;
+			}
+			
+		// 4의 배수해에는 윤년. 그러나 100의 배수인 해는 윤년이 아님.
+			if ( iYear % 4 == 0 && iYear % 100 != 0 ) {
+				iLastDay = 29;
+		// 400의 배수인 해는 윤년
+			} else if ( iYear % 400 == 0 ) {
+				iLastDay = 29;
+		// 위 조건에 맞지 않으면 윤년아님.
+			} else {
+				iLastDay = 28;
+			}
+		break;
+	}
+
+	for ( var iDay = 1; iDay <= iLastDay; iDay++) {
+		var option = document.createElement("option");
+		option.text = iDay;
+		option.value = iDay;
+		obj.add(option);
+	}
+
+	if ( choose == false) {
+		var toDay = new Date();
+		obj.value = toDay.getDate();
+	}
+};
+
+common.setHourList = function (obj, choose) {
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "= Choose =";
+		option.value = "";
+		obj.add(option);
+	}
+
+	for ( var iCnt = 0; iCnt <= 23; iCnt++) {
+		var option = document.createElement("option");
+		option.text = iCnt;
+		option.value = iCnt;
+		obj.add(option);
+	}
+
+	if ( choose == false) {
+		var toDay = new Date();
+		obj.value = toDay.getHours();
+	}
+
+};
+
+common.setMinuteList = function (obj, interval, choose) {
+	if ( choose || choose == undefined) {
+		var option = document.createElement("option");
+		option.text = "= Choose =";
+		option.value = "";
+		obj.add(option);
+	}
+
+	for ( var iCnt = 0; iCnt <= 59; iCnt+= interval) {
+		var option = document.createElement("option");
+		option.text = iCnt;
+		option.value = iCnt;
+		obj.add(option);
+	}
+
+	if ( choose == false) {
+		obj.value = 0;
+	}
+
+};
+
+/**
+ * 날짜 계산.
+ * @param src
+ * @param unit
+ * @param addDay
+ * @returns
+ */
+common.getDateCalc = function (src, unit, addDay) {
+	var srcYear;
+	var srcMonth;
+	var srcDay;
+	var cDate;
+
+	var cYear, cMonth, cDay;
+	var sDelimiter = "";
+	
+	if ( src.length == 10 ) {
+		srcYear		= eval(src.substring(0, 4));
+		srcMonth	= eval(src.substring(5, 7));
+		srcDay		= eval(src.substring(8,10));
+		sDelimiter	= src.substring(4, 5);
+	} else if ( src.length == 8 ) {
+		srcYear		= eval(src.substring(0, 4));
+		srcMonth	= eval(src.substring(4, 6));
+		srcDay		= eval(src.substring(7, 8));
+	} else {
+		alert("날짜 형식오류 [" + src + "]");
+		return src;
+	}
+		
+	if (unit.toLowerCase() == "y") {
+		srcYear		= srcYear + addDay; 
+	} else if (unit.toLowerCase() == "m") {
+		srcMonth	= srcMonth + addDay;
+	} else if (unit.toLowerCase() == "d") {
+		srcDay		= srcDay + addDay;
+	}
+		 
+	cDate	= new Date(srcYear, srcMonth - 1, srcDay) // 12월, 31일을 초과하는 입력값에 대해 자동으로 계산된 날짜가 만들어짐.
+	cYear	= cDate.getFullYear();
+	cMonth	= cDate.getMonth() + 1;
+	cDay	= cDate.getDate();
+
+	cMonth = cMonth < 10 ? "0" + cMonth : cMonth;
+	cDay = cDay < 10 ? "0" + cDay : cDay;
+
+	return cYear + sDelimiter + cMonth + sDelimiter + cDay;
+}; 
+
+/**
+ * 성명 입력값 체크
+ * @param _value
+ */
+common.validationName = function(_value) {
+	var patternrepWri = /[^(a-zA-Z가-힝\s)]/;
+    if (patternrepWri.test(_value)) {
+    	return false;
+    }
+    return true;
+};
+
+/**
+ * 한글, 영문, space만 입력
+ * @param obj
+ */
+common.hangulEng = function(obj){
+	 if(( event.keyCode < 65 && event.keyCode != 32) || ( event.keyCode > 122 && event.keyCode <= 127) || ( event.keyCode > 90 && event.keyCode <= 96)){
+		 return false;
+	 } else {
+		 return true;
+	 }
+};
+
+/**
+ * 바이트 체크
+ * @param obj
+ * @param maxLength
+ * @param title
+ * @param byteFieldName
+ */
+common.checkByte = function(obj, maxLength, title, byteFieldName) {
+	var val = obj.value;
+	var li_str_len = val.length;
+	var li_max = maxLength;
+	
+	var i = 0;
+	var li_byte = 0;
+	var li_len = 0;
+	var ls_one_char = "";
+
+	for(i=0; i< li_str_len; i++)
+	{
+		ls_one_char = val.charAt(i);
+		if (escape(ls_one_char).length > 4) {
+			li_byte += 2;
+		}else{
+			li_byte++;
+		}
+		if(li_byte <= li_max){
+			li_len = i + 1;
+		}
+	}
+	if(li_byte > li_max){
+		alert(title + "는" + maxLength+" byte이상 내용을\n입력하실 수 없습니다.");
+		obj.value = val.substr(0, li_len);
+		obj.focus();
+	} else {
+		if( byteFieldName != undefined ) {
+			$("#" + byteFieldName).text(li_byte);
+		}
+	}
+};
+
+/**
+ * 달력생성
+ * @param _data
+ */
+common.createCalendar = function(_data, _fncCallBack) {
+	var strBuffer = "";
+	strBuffer += '<table class="calendar">										';
+	strBuffer += '	<caption>달력</caption>										';
+	strBuffer += '<thead>														';
+	strBuffer += '	<tr>														';
+	strBuffer += '		<th class="sun" style="text-align:center">일</th>		';
+	strBuffer += '		<th style="text-align:center">월</th>					';
+	strBuffer += '		<th style="text-align:center">화</th>					';
+	strBuffer += '		<th style="text-align:center">수</th>					';
+	strBuffer += '		<th style="text-align:center">목</th>					';
+	strBuffer += '		<th style="text-align:center">금</th>					';
+	strBuffer += '		<th class="sat" style="text-align:center">토</th>		';
+	strBuffer += '	</tr>														';
+	strBuffer += '</thead>														';
+	strBuffer += '<tbody id="tbdCalendar">										';
+	strBuffer += '</tbody>														';
+	strBuffer += '</table>														';
+
+	$("#cal_area").html(strBuffer);
+
+	var y = _data.year;	// 년
+	var m = _data.month < 10 ? "0"+_data.month:_data.month;// 월
+	var sBlank = _data.startBlank;	// 당월 1일이전 공백
+	var eBlank = _data.endBlank;	// 당웡 말일이후 공백
+	var calendar = _data.calendar;	// 달력 값
+	var isThisMonth = true;			// 현재 월인지 체크
+	
+	var dayOfWeek = ""; // 월~토
+	var isCreateStartBlank = false;
+	
+	// 이전, 다음 달 체크
+	for( var idx = 0; idx < _data.reserveDays[y+m+calendar[idx].day]; idx++ ) {
+		isThisMonth;
+	}	
+	
+	for( var idx = 0; idx < calendar.length; idx++ ) {
+		
+		dayOfWeek = calendar[idx].dayOfWeek;
+		if( !isCreateStartBlank || dayOfWeek === "sun" ) { // 1일 이전 빈칸생성 시점이나 일요일인경우
+			$("#tbdCalendar").append("<tr />");
+		}
+		
+		if( !isCreateStartBlank ) { // 1일 이전 빈칸생성 하기 전인경우
+			for( var sb_index = 0 ; sb_index < sBlank; sb_index++ ) {
+				$("#tbdCalendar tr:last").append($("<td></td>"));
+			}
+			isCreateStartBlank = true;
+		}
+		
+		if ( _data.reserveDays[y+m+calendar[idx].day] == undefined ) {	// 예약불가능일
+			if( dayOfWeek == "pub" ) {
+				dayOfWeek = "sun";
+			}
+			$("#tbdCalendar tr:last").append(
+				$("<td></td>").addClass(dayOfWeek)
+				              .text(parseInt(calendar[idx].day))
+			);
+		} else { // 예약가능일
+			$("#tbdCalendar tr:last").append(
+				$("<td id='"+ _data.reserveDays[y+m+calendar[idx].day] + "' class='avl'><a href=\"javascript:" + _fncCallBack + "('" + y + "','" + m + "','" + calendar[idx].day + "')\">" + parseInt(calendar[idx].day) + "</a></td>")
+			);
+		}
+	}
+	
+	for( var eb_index = 0 ; eb_index < eBlank; eb_index++ ) {
+		$("#tbdCalendar tr:last").append($("<td></td>"));
+	}
+	
+	$("#spnYear").text(y);
+	$("#spnMonth").text(m);
+	
+};
+
+/**
+ * 달력생성
+ * @param _data
+ */
+common.createCalendarToMoible = function(_data, _fncCallBack) {
+	var strBuffer = "";
+	strBuffer += '<table border="1" summary="예약날짜 선택 캘린더입니다. 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다."> ';
+	strBuffer += '	<caption>예약날짜 선택 캘린더</caption>							';
+	strBuffer += '<thead>														';
+	strBuffer += '	<tr>														';
+	strBuffer += '		<th scope="col">일</th>									';
+	strBuffer += '		<th scope="col">월</th>									';
+	strBuffer += '		<th scope="col">화</th>									';
+	strBuffer += '		<th scope="col">수</th>									';
+	strBuffer += '		<th scope="col">목</th>									';
+	strBuffer += '		<th scope="col">금</th>									';
+	strBuffer += '		<th scope="col">토</th>									';
+	strBuffer += '	</tr>														';
+	strBuffer += '</thead>														';
+	strBuffer += '<tbody id="tbdCalendar">										';
+	strBuffer += '</tbody>														';
+	strBuffer += '</table>														';
+	
+	$("#cal_area").html(strBuffer);
+	
+	var y = _data.year;	// 년
+	var m = _data.month < 10 ? "0"+_data.month:_data.month;// 월
+	var sBlank = _data.startBlank;	// 당월 1일이전 공백
+	var eBlank = _data.endBlank;	// 당웡 말일이후 공백
+	var calendar = _data.calendar;	// 달력 값
+	var isThisMonth = true;			// 현재 월인지 체크
+	
+	var dayOfWeek = ""; // 월~토
+	var isCreateStartBlank = false;
+	
+	// 이전, 다음 달 체크
+	for( var idx = 0; idx < _data.reserveDays[y+m+calendar[idx].day]; idx++ ) {
+		isThisMonth;
+	}	
+	
+	for( var idx = 0; idx < calendar.length; idx++ ) {
+		
+		dayOfWeek = calendar[idx].dayOfWeek;
+		if( !isCreateStartBlank || dayOfWeek === "sun" ) { // 1일 이전 빈칸생성 시점이나 일요일인경우
+			$("#tbdCalendar").append("<tr />");
+		}
+		
+		if( !isCreateStartBlank ) { // 1일 이전 빈칸생성 하기 전인경우
+			for( var sb_index = 0 ; sb_index < sBlank; sb_index++ ) {
+				$("#tbdCalendar tr:last").append($("<td></td>"));
+			}
+			isCreateStartBlank = true;
+		}
+		
+		if ( _data.reserveDays[y+m+calendar[idx].day] == undefined ) {	// 예약불가능일
+			if( dayOfWeek == "pub" ) {
+				dayOfWeek = "sun";
+			}
+			$("#tbdCalendar tr:last").append(
+					$("<td></td>").addClass(dayOfWeek)
+					.text(parseInt(calendar[idx].day))
+			);
+		} else { // 예약가능일
+			$("#tbdCalendar tr:last").append(
+					$("<td id='"+ _data.reserveDays[y+m+calendar[idx].day] + "' class='avl'><a href=\"javascript:" + _fncCallBack + "('" + y + "','" + m + "','" + calendar[idx].day + "')\">" + parseInt(calendar[idx].day) + "</a></td>")
+			);
+		}
+	}
+	
+	for( var eb_index = 0 ; eb_index < eBlank; eb_index++ ) {
+		$("#tbdCalendar tr:last").append($("<td></td>"));
+	}
+	
+	$("#spnYear").text(y);
+	$("#spnMonth").text(m);
+	
+};
+
+/**
+ * 주소록 combo Box 생성
+ * @param obj
+ * @param callBack
+ */
+common.addressList = function(obj, callBack) {
+	try {
+		while( 0 < obj.length){
+			obj.remove(0);
+		}		
+	} catch (exception) {}
+
+	data.ajaxJson("/mypage/getMyAddressList.as", null, function(result) {
+		if ( result.length == 0 ) return;
+		var option = document.createElement("option");
+		option.text = "선택";
+		option.value = "";
+		obj.add(option);
+
+		for ( var iCnt = 0; iCnt < result.length; iCnt++) {
+			var option = document.createElement("option");
+			option.text = result[iCnt].ADDR_NAME;
+			option.value = result[iCnt].ADDR_SEQ;
+			obj.add(option);
+		}
+	});
+
+	obj.addEventListener("change", function() {
+		if ( obj.value == '' ) return;
+		data.ajaxJson("/mypage/getAddressInfo.as", { ADDR_SEQ: obj.value }, function(result) {
+			callBack(result);
+		});
+	});
+};
+
+/**
+ * combobox option 삭제
+ * @param obj
+ */
+common.removeComboOption = function(obj) {
+	try {
+		while( 0 < obj.options.length){
+			obj.remove(0);
+		}		
+	} catch (exception) {}
+};
+
+/**
+ * 인코딩 - 암호화 용
+ * @param param
+ * @returns {String}
+ */
+
+function encode(param) {
+	var KeyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
+	var rtn = "";
+	var chr1, chr2, chr3;
+	var enc1, enc2, enc3, enc4;
+	var i = 0;
+	
+	do {
+		chr1 = param.charCodeAt(i++);
+		chr2 = param.charCodeAt(i++);
+		chr3 = param.charCodeAt(i++);
+		enc1 = chr1 >> 2;
+		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+		enc4 = chr3 & 63;
+		
+		if(isNaN(chr2)) {
+			enc3 = enc4 = 64;
+		} else if(isNaN(chr3)) {
+			enc4 = 64;
+		}
+		
+		rtn = rtn + KeyStr.charAt(enc1) + KeyStr.charAt(enc2) + KeyStr.charAt(enc3) + KeyStr.charAt(enc4);
+	} while(i < param.length);
+	
+	return rtn;
+}
+
+// 공백 값 삭제
+common.isEmpty = function( obj ) {
+    if( obj.value.replace(/\s/g,"") === "" ) {
+    	return true;
+    }
+    return false;
+};
+
+// 숫자 이외 값 삭제
+common.rmNonNumber = function( obj ) {
+	obj.value = obj.value.replace(/\D/g,"");
+};
+
+// 공백제거
+common.rmSpace = function( _val ) {
+	if( _val == undefined ) {
+		return "";
+	}
+    return _val.replace(/\s/g,"");
+};
+
+var phoneMidPattern = new Array('000', '111', '0000', '1111');
+common.phoneMidNumChk = function(num) {		
+	var loopCnt = phoneMidPattern.length;
+	for( var i=0; i<loopCnt; i++) {
+		if (this.phoneMidPattern[i] == num) {
+			popup.message(phoneMidPattern[i] + ' 번은 입력하실 수 없습니다.');
+			return false;
+		}
+	}
+	return true;
+};
+
+common.phoneMidNumChkId = function(num, id) {
+	if(!this.phoneMidNumChk(num)) {
+		$("#"+id).val("");
+		$("#"+id).focus();
+	}
+};
+
+/**
+ * 평가 생성
+ * @param obj
+ * @param callBack
+ */
+common.evalFormat = function(formName, serviceType, contextType, contextNo) {
+
+	var sbForm = new StringBuilder("");
+	
+//	sbForm.append("<div class='eval_cnt_new'>");
+	sbForm.append("		<h4 class='ir'>위 내용이 도움이 되셨나요?</h4>");
+	sbForm.append("		<div class='eva_bar_wrap'>");
+	sbForm.append("			<ol>");
+	sbForm.append("			<li class='on' onClick='onClickEval(this)'><a href='#none'>10</a></li>");
+	
+	for ( var iScore = 9; iScore > 0; iScore--) {
+		sbForm.append("<li onClick='onClickEval(this)'><a href='#none'>" + iScore + "</a></li>");
+	}
+	sbForm.append("			</ol>");
+	sbForm.append("		</div>");
+	sbForm.append("		<button type='button' class='btn_gray_b' onClick=\"common.setEvaluation('" + formName + "')\"'>평가하기</button>");
+//	sbForm.append("</div>");
+	sbForm.append("<input type='hidden' name='SERVICE_TYPE' value='" + serviceType + "'>");
+	return sbForm;
+};
+
+common.setEvaluation = function(formName) {
+	data.ajaxJson("/eval/insertEvaluation.as", $('#' + formName).serialize(), function(result) {
+		popup.message(result.MESSAGE);
+		EVAL_FORMAT.style.display="none";
+	});
+};
+
+/**
+ * 평가 생성 -  모바일
+ * @param obj
+ * @param callBack
+ */
+common.evalFormatMobile = function(formName, serviceType, contextType, contextNo) {
+
+	var sbForm = new StringBuilder("");
+		
+	sbForm.append("<div class='eval_wrap'>");
+	sbForm.append("		<p>위 내용이 도움이 되셨나요?</p>");	
+	sbForm.append("		<p class='s_txt'>고객님의 소중한 의견<br />남겨주세요.</p>");
+	sbForm.append("		<textarea id='EVAL_OPINION' cols='80' rows='5' title='의견 입력란' placeholder='고객님의 소중한 의견 부탁 드립니다.' style='width:100%; height:69px'></textarea>");
+	sbForm.append("		<div class='btn_wrap side'>");	
+	sbForm.append("			<span class='select'>");
+	sbForm.append("				<select id='SELECT_POINT' title='선택란' style='width:100%'>");		
+	sbForm.append("					<option value='10' selected>10점</option>");
+	for ( var iScore = 9; iScore > 0; iScore--) {
+		sbForm.append("			<option value='"+ iScore + "'>" + iScore + "점</option>");
+	}
+	sbForm.append("				</select>");
+	sbForm.append("			</span>");
+	sbForm.append("			<button type='button' class='btn_gray' onClick=\"common.setEvaluationMobile('" + formName + "')\"'>평가하기</button>");
+	sbForm.append("		</div>");
+	sbForm.append("</div>");	
+	
+	return sbForm;
+};
+
+common.setEvaluationMobile = function(formName) {
+	var sform = document.getElementById(formName);
+	
+	sform.EVAL_POINT.value = $("#SELECT_POINT").val();
+	sform.CUST_OPINION.value = $("#EVAL_OPINION").val();
+	data.ajaxJson("/eval/insertEvaluationMobile.as", $('#' + formName).serialize(), function(result) {
+		popup.message(result.MESSAGE);
+		EVAL_FORMAT.style.display="none";
+	});
+};
+
+/**
+ * jQuery 방식 Option 생성
+ * @param obj
+ * @param choose
+ */
+common.jQueryCreateComboBox = function (obj, _dataList) {
+
+	obj.append($('<option/>', { 
+		text : "선택",
+        value: ""
+    }));
+	
+	for( var idx = 0 ; idx < _dataList.length; idx++ ) {
+		obj.append($('<option/>', { 
+			text : _dataList[idx].TEXT,
+	        value: _dataList[idx].VALUE
+	    }));		
+	}
+	
+};
+
+/**
+ * jQuery 방식 Option 삭제
+ * @param obj
+ */
+common.jQueryRemoveOption = function(obj) {
+	try {
+		$(obj).find("option").each(
+			function() {
+				$(this).remove();
+			}
+		);
+	} catch (exception) {}
+};
+
+common.doPageView = function(page) {
+	form.PAGE.value = page;
+	doSearch();
+};
+
+
+common.nvl = function(_val) {
+	if( _val == "" || _val == undefined  || _val == "undefined" ) {
+		return "";
+	} else {
+		return _val.trim(); 
+	}
+};
+
+
+common.pageFormat = function(currentPage, totalCount) {
+
+	var startPage = 1;
+	var endPage = totalCount;
+
+	var sbList = new StringBuilder("");
+	sbList.append("<div class='hr_paging_w'>");
+	sbList.append("<a href='#none' onClick='common.doPageView(1)' class='first' title='맨 처음 리스트'><span class='ir'>맨 처음 리스트</span></a>");
+	
+	if ( currentPage > 1 )  {
+		sbList.append("<a href='#none' onClick='common.doPageView(" + ( (eval(currentPage) - 10) < 1 ? 1 : (eval(currentPage) - 10) ) + ")' class='prev' title='이전리스트'>");
+		sbList.append("<span class='ir'>이전리스트</span></a>");
+	}
+
+	if ( totalCount >= 10 ) {
+		 if ( eval(currentPage) + 4 <= 10 ) {
+			 endPage = 10;
+		 } else if ( eval(currentPage) + 4 < eval(totalCount) ) {
+			 endPage = eval(currentPage) + 4;
+		 } else {
+			 endPage = eval(totalCount);
+		 }
+		 startPage = eval(currentPage) - 5;
+		 if ( startPage < 1 ) startPage = 1;
+	}
+
+	for ( var iPage = startPage; iPage <= endPage; iPage++) {
+		sbList.append("<a href='#none' onClick='common.doPageView(" + iPage + ")'>");
+		if ( iPage == currentPage ) sbList.append("<strong>");
+		sbList.append(iPage);
+		if ( iPage == currentPage ) sbList.append("</strong>");
+		sbList.append("</a><span class='hide'>|</span>");
+	}
+	
+	if ( currentPage < totalCount )	{
+		sbList.append("<a href='#' onClick='common.doPageView(" + ( (eval(currentPage) + 10) > eval(totalCount) ? totalCount : (eval(currentPage) + 10 )) + ")' class='next' title='다음리스트'>");
+		sbList.append("<span class='ir'>다음리스트</span></a>");
+	}
+	
+	sbList.append("<a href='#none' onClick='common.doPageView(" + totalCount + ")' class='last' title='맨 끝 리스트'><span class='ir'>맨 끝 리스트</span></a>[마지막]</a>");
+	sbList.append("</DIV>");
+
+	return sbList.toString();
+};
+
+common.copyToClipboard = function (s) {
+
+	var IE=(document.all)?true:false;
+	if (IE) {
+		window.clipboardData.setData("Text", s);
+	} else {
+		temp = prompt("이 글의 트랙백 주소입니다. Ctrl+C를 눌러 클립보드로 복사하세요", s);
+	}
+};
+
+/**
+ * 파라미터로 받은 필드를 readonly로 만들어준다. 
+ * @param obj
+ */
+common.setReadOnly = function (obj) {
+
+	var val = obj.value;
+	if ( obj.type == "select-one" ) {
+		$(obj).change(function () { 
+			obj.value = val;
+		});
+		obj.style.border = "0px";
+	} else if ( obj.length > 1) {
+		for ( idx in obj ) {
+			obj[idx].disabled = true;
+		}
+	} else if ( obj.type == "checkbox" ) {
+		var chk = obj.checked;
+		$(obj).change(function () { 
+			obj.checked = chk;
+		});
+	} else {
+		obj.readOnly = true;
+		obj.style.border = "0px";
+	}
+};
+
+/**
+ * 현재시작 계산
+ * @param obj
+ */
+common.RunTimer = function(){ 
+	 var today = new Date();    // 현재시간 얻기 
+	 var RunTime = today.getTime(); // 밀리초 from 1/1/70 
+	 return RunTime; 
+};
+
+/**
+ * 실행시간 계산
+ * @param obj
+ */
+common.excutionTime = function(functionName, StartTime, EndTime){ 
+}; 
+
+/**
+ * 날짜 차이 계산 함수
+ * date1 : 기준 날짜(YYYY-MM-DD), date2 : 대상 날짜(YYYY-MM-DD)
+ * @param obj
+ */
+common.CalcDate = function(_y, _m, _d){
+
+	var today = new Date();
+	var y = today.getFullYear();
+	var m = today.getMonth() + 1;
+	var d = today.getDate();
+	
+    var date1 = new Date(parseInt( y),parseInt( m)-1,parseInt( d));
+    var date2 = new Date(parseInt(_y),parseInt(_m)-1,parseInt(_d));
+    
+    var getDiffTime = date1.getTime() - date2.getTime();
+    var passDate = Math.floor(getDiffTime / (1000 * 60 * 60 * 24));
+
+    return passDate; 
+};
+
+/*
+ * 바이트로 글자 자르기 
+ */
+common.cutStr = function(str,limit){
+	var tmpStr = str;
+	var byte_count = 0;
+	var len = str.length;
+	var dot = "";
+
+	for( var i=0; i<len; i++ ) {
+		byte_count += common.chr_byte(str.charAt(i)); 
+		if(byte_count == limit-1){
+			if(common.chr_byte(str.charAt(i+1)) == 2){
+				tmpStr = str.substring(0,i+1);
+				dot = "....";
+			} else {
+				if(i+2 != len) dot = "....";
+				tmpStr = str.substring(0,i+2);
+			}
+			break;
+		} else if ( byte_count == limit) {
+			if(i+1 != len) dot = "....";
+			tmpStr = str.substring(0,i+1);
+			break;
+		}
+	}
+
+	return tmpStr+dot;
+};
+
+common.chr_byte = function(chr){
+	if(escape(chr).length > 4)
+		return 2;
+	else
+		return 1;
+};

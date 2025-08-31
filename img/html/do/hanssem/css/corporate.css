@@ -1,0 +1,78 @@
+
+.top_menu{ width:960px; height:70px; position:relative;}
+.top_menu_left{ position:absolute; }
+.top_menu_right{ position:absolute; right:0; }
+
+.top_menu_left li,.top_menu_right li{ float:left; font-size:12px; margin-right:15px; }
+.top_menu_left li{ border-right:#999 solid 1px; width:70px; }
+
+.top_menu_left li a{ color:#333;   }
+.top_menu_right span{ color:#F00; text-decoration:underline; font-size:12px; }
+.top_menu_right li a{ color:#CCC;}
+.top_menu_right li a:hover{ color:#000; }
+
+img{ padding:20px 0; }
+
+#img_font{ font-size:12px; color:bbb; text-align:right; line-height:60px;  }
+.corporate{ float:left; width:230px; height:50px; border-bottom:#333 solid 2px; 
+		 margin-left:10px; font-size:18x; font-weight:bold;
+		 line-height:50px; margin-bottom:30px; }
+.corporate a{ color:#CCC; display:block; border-bottom:#CCC solid 2px; }
+.corporate a:hover{ color:#333; border-bottom:#333 solid 2px; }
+
+.corporate:first-child{ margin-left:0; }
+section h1{ font-family:'Nanum Myeongjo', serif; font-weight:lighter; 
+   			padding: 5px 0 40px 0; font-size:25px; }
+
+.top_left{ float:left; width:600px; }
+.top_right{ float:right; width: 230px; font-size:12px;   }
+.top_right_p{ padding:10px 0 ; line-height:20px; border-bottom:#999 solid 1px;  }
+.top_right_r{ padding:10px 0; line-height:20px; }
+span{ color:#999; }
+
+.top_left p{ line-height:25px;  font-size:13px;  }
+.top_left h1{ font-weight:lighter; font-size:28px; }
+
+.level_left,.level_right{  width:470px; font-size:13px;  line-height:25px; 
+		margin-bottom:30px; }
+
+.level_left{ float:left;   }
+.level_right{ float:right;  }
+		
+.level_right h2{ margin-bottom:20px; }
+.level_left h2{ margin-bottom:20px; }		
+
+
+.second_level{ border-bottom:#999 solid 1px; padding-bottom:20px;  }
+
+
+.level3{ border-bottom:#999 solid 1px; padding-bottom:20px;  }
+.level3:after{ content:""; clear:both; display:block; }
+.level3top_left,.level3top_right{ width:470px; font-size:13px;  line-height:25px; 
+		margin-bottom:20px; }
+
+.level3top_left{ float:left; margin-bottom:20px; margin-top:20px; }
+.level3top_right{ float:right; margin-bottom:20px; margin-top:20px; }
+
+.level3top_right h2{ margin-bottom:10px; }
+
+.level3top_left h2{ margin-bottom:10px; }
+
+.level3down_left,.level3down_right{ width:470px; font-size:13px;  line-height:25px; 
+		margin-top:20px;}
+		
+	
+		
+.level3down_left{ float:left;  }
+.level3down_left h2{ margin-top:5px; margin-bottom:5px;}
+
+.level3down_right{ float:right; margin-top:40px; }
+
+
+
+
+
+/*article end*/
+
+
+

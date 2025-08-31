@@ -1,0 +1,245 @@
+﻿section{ width:100%; }
+.sect_wrap{
+			
+}
+figure{
+	 background:url('../img/main_bg.jpg')0 -100px no-repeat; width:100%; height:500px;
+	
+	 
+}
+figure div{ background:url('../img/main_visual.png')200px -100px no-repeat; width:100%; height:600px;
+		 	background-size:contain;
+}
+
+/*슬라으더 끝*/
+
+.cont_prduct{
+		width:100%;  height:300px; border-top:1px red solid;
+}
+
+.cont_tit{
+		background:url('../img/bg_maintit.png') no-repeat; width:360px; height:60px; line-height:50px; margin:auto; display:block; font-size:25px; color:#FFFFFF; text-align:center;
+}
+
+.kong{ background: url('../img/1gong.jpg')no-repeat center center; width:150px; height:150px; border:1px #ccc solid; border-radius:150px; background-color:#FFFFFF;
+}
+.kong:hover{ background:url('../img/ghv.png')no-repeat center center; width:150px; height:150px;
+	
+}
+
+
+
+
+
+.okgo{ background: url('../img/2ok.jpg')no-repeat center center; width:150px; height:150px; border:1px #ccc solid; border-radius:150px; background-color:#FFFFFF;
+}
+.okgo:hover{ background:url('../img/ghv.png')no-repeat center center; width:150px; height:150px;
+	
+}
+
+.power{background:url('../img/3power.jpg')no-repeat center center; width:150px; height:150px; border:1px #ccc solid; border-radius:150px; background-color:#FFFFFF;
+}
+.power:hover{ background:url('../img/phv.png')no-repeat center center; width:150px; height:150px;
+	
+}
+
+.mai{ background:url('../img/4mai.jpg')no-repeat center center; width:150px; height:150px; border:1px #ccc solid; border-radius:150px; background-color:#FFFFFF;
+}
+.mai:hover{ background:url('../img/mhv.png')no-repeat center center; width:150px; height:150px;
+	
+}
+
+.liver{ background: url('../img/5liver.jpg')no-repeat center center; width:150px; height:150px; border:1px #ccc solid; border-radius:150px; background-color:#FFFFFF;
+}
+.liver:hover{ background:url('../img/lhv.png')no-repeat center center; width:150px; height:150px;
+	
+}
+
+.pd_wrap{
+		width:1000px; margin:auto; position:relative;
+}
+.pd_wrap>div{
+				float:left; width:200px; margin-top:20px;
+} 
+.pd_wrap>div p{
+					width:150px;  font-size:18px; text-align:left;  text-align:center; margin-top:20px;
+}
+/*3월의 추천제품 끝*/
+.cont_view{
+		width:100%; background:#E8E3DC; height:250px; border-top:1px red solid;
+}
+.cont_view>div{
+		width:880px; margin: auto; height:150px; position:relative; z-index:2;cursor:pointer;
+}
+.cont_view div div{
+		float:left; width:100px; margin:20px 20px; 
+}
+
+
+#border{
+		width:800px; border-bottom:1px #D5D5D5 solid; position:absolute; top:120px; z-index:-1;
+}
+
+
+
+.normal{ background:url('../img/sprite.png') no-repeat; background-position:-91px 0; width:100px; height:115px;}
+.spaciall {background:url('../img/sprite.png') no-repeat;background-position:-193px 0; width:100px; height:115px;}
+.fund {background:url('../img/sprite.png') no-repeat;background-position:-295px 0; width:100px; height:115px;}
+.medic{background:url('../img/sprite.png') no-repeat;background-position:-397px 0; width:100px; height:115px;}
+.promo{background:url('../img/sprite.png') no-repeat;background-position:-499px 0; width:100px; height:115px;}
+.yakguk {background:url('../img/sprite.png') no-repeat;background-position:-601px 0; width:100px; height:115px;}
+
+.normal:hover {background-position:-91px -114px;}
+.spaciall:hover {background-position:-193px -114px;}
+.fund:hover {background-position:-295px -115px;}
+.medic:hover {background-position:-397px -115px;}
+.promo:hover {background-position:-499px -115px;}
+.yakguk:hover {background-position:-601px -115px;}
+
+/*광동의 제약제품 한눈에 보기*/
+.ad_box{
+	width:100%; background:#f5f5f5; margin:0 auto; padding:90px 0; height:200px;cursor:pointer;
+}
+
+.ad_box>div{
+		width:1120px; margin:0 auto;	
+}
+.ad_box div div{
+		float:left; margin-left:20px;
+}
+
+.reportdata{ 
+			background:url('../img/img_magazine.jpg'); width:200px; height:200px;
+	
+}
+.kd_magzin{
+			background:url('../img/img_news.jpg'); width:200px; height:200px;
+}
+.event_banner{
+			background:url('../img/banner.jpg'); width:640px; height:200px;
+}
+
+/*광고 끝*/
+
+
+.bar>div{float:left; margin-bottom:50px;cursor:pointer;
+	
+}
+
+.bar_lef{
+	width:50%;  background:#d9e8d0; position:relative;
+}
+.bar_lef div{float:right;
+	
+}
+
+
+.box1{
+	position:absolute; right:120px; top:15px; line-height:25px;
+}
+
+#left_img{
+	background:url('../img/logo_shop.png'); width:160px; height:46px; margin:20px 350px 20px 0;
+}
+.bar_lef h5{
+	font-weight:bold;  color:cadetblue;
+}
+.bar_lef p{font-size:18px;
+	
+}
+
+.goin{
+	background:url('../img/sprite.png')no-repeat 0 -85px; width:35px; height:40px; position:absolute; right:-80px; top:10px;
+}
+
+
+.bar_right{
+	width:50%; background :#f1d6e0; position:relative;
+}
+
+.bar_right div{
+	float:left;
+}
+#bar_kangd{
+	background:url('../img/logo_box.png'); width:119px; height:39px; margin:23.5px 50px;
+}
+
+.box2{
+	position:absolute; left:220px; top:20px; line-height:25px;
+}
+
+
+.bar_right h5{
+	font-weight:bold;  color:cadetblue;
+}
+
+.bar_lef p{font-size:18px;
+	
+}
+
+.goin1{
+	background:url('../img/sprite.png')no-repeat 0 -85px; width:35px; height:40px; position:absolute; right:-80px; top:5px;
+}
+
+/*bar 끝*/
+
+.kd_mdeia{
+	width:100%; background:#f5f5f5;
+}
+.kd_mdeia:after{
+	content:""; clear:both; display:block;
+}
+.media_wrap{
+	width:1120px; margin:auto; 
+}
+
+.media_wrap>div{ cursor:pointer;
+	float:left;  margin:1% 0 100px 1%; width:49%; background:#fff; position:relative;
+}
+.media_wrap h2{
+	text-align:center; padding:30px;
+	}
+
+.media_wrap div>div{
+	width:40%; float:left; margin:5%;
+
+}
+
+.fb{
+	background:url('../img/sprite.png');background-position:-37px -85px; width:24px; height:28px;
+ display:inline-block;float:left;margin-right:10px;}
+.ytb{
+	background:url('../img/sprite.png');background-position:-63px -86px;width:24px; height:28px;
+display:inline-block; float:left; margin-right:10px;}
+
+.txt1{
+	line-height:30px;
+}
+
+.sutji img{width:230px; height:150px;
+
+}
+
+.circle{    
+
+	 clear:both; width:10px; height:10px; border-radius:10px; background:#f00; margin:0 auto 10px; 
+}
+.circl{ background:#ddd; 
+	
+}
+.circl:hover{
+	background:#f00;
+}
+.circle1{
+	 position:absolute; left:45%; bottom:4.5%; clear:both; width:10px; height:10px; border-radius:10px; background:#f00;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+/**
+ * Description : common scripts for huas.
+ * Author : Minho Park.
+ * Remark : some functions, not used, will remove.
+ **************************************************************************
+ * DATE			: Author		: Desc. 
+ **************************************************************************
+ * 2014.04.03	: Minho Park	: for first edition.
+ * 2014.04.07	: Minho Park	: data.ajax was changed to XMLHTTPRequest 
+ **************************************************************************
+ */
+var data = new function() {};
+
+data.formLoad = function (frm, url, param, callBack) {
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: param,
+		dataType:'json'
+	}).error(function(e){
+		popup.message(e.responseText);
+	}).done(function(data) {
+		common.setFormData(frm, jQuery.parseJSON(data));
+		callBack.apply();
+	});
+};
+
+data.ajax = function (url, param, callBack ) {
+	var req = new XMLHttpRequest();
+
+	req.open("post", url);
+	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	req.onload = function() {
+		if ( req.status == "200" ) {
+			callBack(jQuery.parseJSON(req.response));
+		} else {
+			popup.message("오류가 발생하였습니다.");
+		}
+	}
+
+	req.send(param);
+};
+
+/**
+ * parameter를 JSON형식으로도 받을 수 있는 Ajax 함수
+ * @param url
+ * @param param
+ * @param callBack
+ */
+data.ajaxJson = function (url, param, callBack ) {
+	$.post( url, param, callBack );
+};
+
+data.getRequestParam = function (form) {
+	var formData = [];
+
+	var frmLength = form.length;
+	var frmInput;
+
+	for ( var iCnt = 0; iCnt < frmLength; iCnt++) {
+		frmInput = form.elements[iCnt];
+		if ( frmInput.id.trim() != "") {
+			if (frmInput.type == "checkbox" && !frmInput.checked ) { continue; }
+			var tempObj = new Object();
+			tempObj[frmInput.id] = frmInput.value;
+			formData.push(tempObj);
+		}
+	}
+
+	return formData;
+};
+
+data.getJSONtoRequestParam = function (JSONdata) {
+console.log(JSONdata);
+	var paramUrl = new StringBuilder("");
+	for ( id in JSONdata) {
+		if ( id == "" || !id ) continue;
+		paramUrl.append("&" + id + "=" + JSONdata[id]);
+	}
+console.log(paramUrl.toString());
+	return paramUrl.toString();
+};

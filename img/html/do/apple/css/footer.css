@@ -1,0 +1,108 @@
+
+@media all and  (max-width:765px){
+
+footer{ clear:both; background:#EEE; padding-bottom:30px;}
+footer:after{ content:""; clear:both; display:block;}
+.sitemap{ width:100%; padding:20px 0;}
+.sitemap:after{ content:""; clear:both; display:block;}
+.sitemap>ul{ width:98%; margin:0 auto;}
+.sitemap>ul>li{ width:90%; font-weight:bold; font-size:1em; color:#000; margin:15px auto;
+				padding:20px 0; border-bottom:#ddd solid 1px; cursor:pointer; position:relative;}
+				
+.cross{ cursor:pointer; background:url(../img/site_mobile.png)0 0 no-repeat; display:inline-block;
+		width:10px; height:10px; position:absolute; right:10px; top:25px;
+		transition:all 0.5;
+		transform:rotate(0);
+		}
+.cross_click{ background-position:0 -10px;
+			transform:rotate(-90deg);
+			-webkit-transform:rotate(-90deg);
+			-moz-transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg);
+			-o-transform:rotate(-90deg);}				
+
+.sitemap ul li ul{ font-weight:normal; margin:7px 0; display:none;}
+.sitemap ul li ul li{ height:17px; line-height:17px; margin-bottom:4px; font-size:0.9em;}
+.sitemap ul li ul li a{ color:#666; display:block;}
+.sitemap ul li ul li a:hover{ text-decoration:underline;}
+.none{ width:20%; height:20px; display:none;}
+
+
+.shop_p{ width:98%; height:100px; line-height:20px; border-bottom:#666 solid 1px;
+		margin-bottom:30px; margin:0 auto;
+		font-size:0.7em; color:#666;}
+.shop_p a{ color:#00F;}
+.shop_p a:hover{ color:#CCC;}		
+		
+.copyright{ width:98%; color:#666; padding-top:20px; position:relative; margin:0 auto;}
+.copyright p,.copyright ul{ float:left; margin-right:20px; font-size:0.6em;}
+.copyright ul li{ float:left; margin-right:20px; border-right:#666; margin-bottom:10px;}
+.copyright ul li a{ color:#666; font-weight:bold;}
+.copyright ul li a:hover{ color:#000; text-decoration:underline;}
+
+
+#korea{ clear:both; right:0px; top:20px; font-weight:bold; font-size:0.6em;}
+address{ clear:both; font-style:normal; font-size:0.6em; margin-top:10px;}	
+}
+
+
+@media all and (min-width:768px) and (max-width:1024px) {
+
+footer{ clear:both; background:#EEE; padding-bottom:30px;}
+footer:after{ content:""; clear:both; display:block;}
+.sitemap{ width:100%; padding:20px 0;}
+.sitemap:after{ content:""; clear:both; display:block;}
+.sitemap>ul{ width:90%; margin:30px auto;}
+.sitemap>ul>li{ float:left; width:20%; font-weight:bold; font-size:1em;}
+
+.sitemap ul li ul{ font-weight:normal; margin:7px 0;}
+.sitemap ul li ul li{ height:17px; line-height:17px; margin-bottom:4px; font-size:0.9em;}
+.sitemap ul li ul li a{ color:#666; display:block;}
+.sitemap ul li ul li a:hover{ text-decoration:underline;}
+.none{ width:200px; height:20px;}
+
+
+.shop_p{ width:90%; height:50px; line-height:50px; border-bottom:#666 solid 1px;
+		margin-bottom:30px; margin:0 auto;
+		font-size:0.6em; color:#666;}
+.copyright{ width:90%; color:#666; padding-top:20px; position:relative; margin:0 auto;}
+.copyright p,.copyright ul{ float:left; margin-right:20px; font-size:0.8em;}
+.copyright ul li{ float:left; margin-right:20px; border-right:#666; margin-bottom:10px;}
+.copyright ul li a{ color:#666; font-weight:bold;}
+.copyright ul li a:hover{ color:#000; text-decoration:underline;}
+
+
+#korea{ position:absolute; right:0px; top:20px; font-weight:bold;}
+address{ clear:both; font-style:normal; font-size:0.8em;}
+}
+	
+	
+@media all and (min-width:1025px) {	
+
+footer{ clear:both; background:#EEE; padding-bottom:30px;}
+footer:after{ content:""; clear:both; display:block;}
+.sitemap{ width:100%; padding:20px 0;}
+.sitemap:after{ content:""; clear:both; display:block;}
+.sitemap>ul{ width:80%; margin:30px auto;}
+.sitemap>ul>li{ float:left; width:20%; font-weight:bold; font-size:1em;}
+
+.sitemap ul li ul{ font-weight:normal; margin:7px 0;}
+.sitemap ul li ul li{ height:17px; line-height:17px; margin-bottom:4px; font-size:0.9em;}
+.sitemap ul li ul li a{ color:#666; display:block;}
+.sitemap ul li ul li a:hover{ text-decoration:underline;}
+.none{ width:200px; height:20px;}
+
+
+.shop_p{ width:80%; height:50px; line-height:50px; border-bottom:#666 solid 1px;
+		margin-bottom:30px; margin:0 auto;
+		font-size:0.9em; color:#666;}
+.copyright{ width:80%; color:#666; padding-top:20px; position:relative; margin:0 auto;}
+.copyright p,.copyright ul{ float:left; margin-right:20px; font-size:0.8em;}
+.copyright ul li{ float:left; margin-right:20px; border-right:#666; margin-bottom:10px;}
+.copyright ul li a{ color:#666; font-weight:bold;}
+.copyright ul li a:hover{ color:#000; text-decoration:underline;}
+
+
+#korea{ position:absolute; right:0px; top:20px; font-weight:bold;}
+address{ clear:both; font-style:normal; font-size:0.8em;}
+}

@@ -1,0 +1,139 @@
+/****************************** 레이어 팝업 ******************************/
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -70px;
+  left: -30px;
+  background: #fff;
+  opacity: 0.9;
+  z-index: 32;
+  display: none;
+}
+
+.close {
+  width: 8em;
+  height: 8em;
+  background: url("../img/close1.png") no-repeat center / 8em;
+  position: fixed;
+  top: 20px;
+  left: 22px;
+  z-index: 999;
+  cursor: pointer;
+  display: none;
+}
+
+.subi {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 450;
+  background-color: #000;
+  opacity: 1;
+}
+
+.subi > li {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+}
+
+.top-note h1,
+.top-note p {
+  text-align: center;
+  color: #fff;
+  margin-top: 1.6em;
+}
+
+.subi > li .top-note h1 {
+  font-size: 1.875em;
+}
+
+.subi > li .top-note > p {
+  font-size: 1.25em;
+}
+
+.subi > li .mid-note {
+  float: right;
+  height: 5em;
+  line-height: 5em;
+  background-color: azure;
+  margin-bottom: 2em;
+}
+
+.subi > li .mid-note div {
+  float: left;
+  border: none;
+}
+
+.subi > li .mid-note div p {
+  color: #666;
+}
+
+.subi > li .foot-note {
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  overflow: scroll;
+}
+
+/****************************** 카테고리 ******
+#list_category {
+  width: 400px;
+  padding: 0.625em;
+  position: fixed;
+  top: 250px;
+  right: -200px;
+  background-color: #b7d7d6;
+  text-indent: 0.625em;
+  z-index: 1000000;
+}
+
+#list_category h3 {
+  font-size: 1.125em;
+  margin-bottom: 0.625em;
+}
+
+#list_category li {
+  font-size: 1.4em;
+  margin-bottom: 0.3125em;
+  background: #575757;
+  color: #fff;
+}
+
+#list_category li a {
+  color: #fff;
+  padding: 0.125em;
+  display: inline-block;
+  width: 390px;
+}
+
+#list_category li a:hover {
+  background: #fff;
+  color: #000;
+}
+************************/
+/****************************** 스크롤바 커스터마이징 ******************************/
+::-webkit-scrollbar {
+  width: 1px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 0, 0.1);
+}

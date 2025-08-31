@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>데이라이트</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+
+
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<style>
+
+.btn_top{ position:fixed; bottom:50px; right:100px; cursor:pointer;}
+
+</style>
+
+<script type="text/javascript" src="engine1/jquery.js"></script>
+
+<script src="jquery-1.7.2.min.js"></script>
+<script src="button.js"></script>
+<script>
+	
+	$(function(){
+		$(window).scroll(function(){
+			if($(this).scrollTop()>150){
+				$('.btn_top').fadeIn()
+				} else{$('.btn_top').fadeOut()
+				
+				}
+			
+			});
+		$('.btn_top').click(function(){
+			$('body,html').animate({
+				scrollTop:0
+				},300);
+				return false;
+				});	
+		
+		
+		});
+</script>
+</head>
+
+<body>
+<div class="btn_top">
+	<img src="img/btn_top.png" alt="">
+</div>
+
+<header>
+
+	<div>
+        <p>* 고객센터 1577-5678 </p>
+        <h1><a href="#"><img src="img/logo.jpg" width="160" alt="logo"></a></h1>
+        <ul>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">주문/배송조회</a></li>
+            <li><a href="#">장바구니</a></li>
+            <li id="top_box"><a href="#">FURSYS GROUP</a></li>
+       </ul>
+        <input type="text" placeholder="검색">
+    </div>
+    
+    <nav>
+    	<ul>
+        	<li><a href="#">쇼핑몰</a>
+            	<ul class="sub">
+                	<li><a href="#">침실</a></li>
+                    <li><a href="#">거실</a></li>
+                    <li><a href="#">주방</a></li>
+                    <li><a href="#">어린이방</a></li>
+                    <li><a href="#">공부방</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">TOYSTORY</a></li>
+            <li><a href="#">웹카달로그</a></li>
+            <li><a href="#">매거진</a></li>
+            <li><a href="#">커뮤니티</a>
+            	<ul class="sub">
+                	<li><a href="#">데이제품사용후기</a></li>
+                    <li><a href="#">데이이벤트</a></li>
+                    <li><a href="#">전시품할인판매</a></li>
+                    <li><a href="#">공간제안서비스</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">고객센터</a>
+            	<ul class="sub">
+                	<li><a href="#">AS/주문/배송문의</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">1:1친절상담</a></li>
+                    <li><a href="#">매장찾기</a></li>
+                    <li><a href="#">매장개설상담</a></li>
+                    <li><a href="#">쇼핑몰공지사항</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">데이라이트소개</a>
+            	<ul class="sub">
+                	<li><a href="#">브랜드스토리</a></li>
+                    <li><a href="#">핵심가치</a></li>
+                    <li><a href="#">데이조명이야기</a></li>
+                    <li><a href="#">그룹가치관</a></li>
+                    <li><a href="#">광고모음</a></li>
+                    <li><a href="#">데이스마트서비스</a></li>
+                    <li><a href="#">인재채용</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+	<div>
+    
+
+        <div id="wowslider-container1">
+        <div class="ws_images">
+        <ul>
+                <li><img src="data1/images/banner1.jpg" alt="banner1" title="banner1" id="wows1_0"/></li>
+                <li><img src="data1/images/banner2.jpg" alt="banner2" title="banner2" id="wows1_1"/></li>
+                <li><img src="data1/images/banner3.jpg" alt="jquery slider" title="banner3" id="wows1_2"/></li>
+                <li><img src="data1/images/banner4.jpg" alt="banner4" title="banner4" id="wows1_3"/></li>
+            </ul>
+            </div>
+            <div class="ws_bullets"><div>
+                <a href="#" title="banner1"><span>1</span></a>
+                <a href="#" title="banner2"><span>2</span></a>
+                <a href="#" title="banner3"><span>3</span></a>
+                <a href="#" title="banner4"><span>4</span></a>
+            </div></div><div class="ws_script" style="position:absolute;left:-99%"></div>
+        <div class="ws_shadow"></div>
+        </div>	
+        <script type="text/javascript" src="engine1/wowslider.js"></script>
+        <script type="text/javascript" src="engine1/script.js"></script>
+        
+	
+    </div><!--배너 제이쿼리 넣을 곳-->
+	<article class="box1">
+    	<h3><img src="img/sb_title.png" alt="스페셜세일"></h3>
+    	<div>
+        	<div class="img_1">&nbsp;</div>
+        	<p>내 아이  어울리는 장난감<br>터닝메카드 골드 50%할인</p>
+        </div>
+        
+        <div>
+        	<div class="img_2">&nbsp;</div>
+        	<p>스타워즈 로그원 개봉 기념</br>영화 티겟 증정</p>
+        </div>
+        <div>
+        	<div class="img_3">&nbsp;</div>
+       		<p>상반기 인기 아이템</br>마이 리틀 포니</p>
+        </div>
+        <div>
+        	<div class="img_4">&nbsp;</div>
+        	<p>2017년 최고의 야심작!</br>진정한 대결은 배트맨 vs 슈퍼맨</p>
+        </div>
+    </article><!--동그라미 이미지end-->
+
+	<article class="box2">
+    	<div><img src="img/bar_img.png" alt="인천점중단바1"></div>
+        <div><p>인천점 운영시간 10:00am~10:00pm</p>
+        	 <p>키즈카페 11:00am~05:00pm(마지막 입장 4:00)</p>
+        </div>
+        <div><p>고객지원센터: 10:00am~10:00pm</p>
+        	 <p>음력 설날 당일과 추석 당일은 쉽니다.</p>
+        </div>
+        <div id="baro"><span>인천점</span> 바로가기 &nbsp;&nbsp;></div>
+    </article><!--box2 end-->
+    <article class="box3">
+        <div class="upb">
+       	    <div class="mid_img1">
+                <p><span>브루인</span> 자세히 보기 &nbsp;&nbsp;▶</p>
+                </div>
+                <div class="mid_img2">
+                <p>이미지 뉴 액티브 큐브<br>
+                TOYSTORY <span class="span_red">회원가</span><br>
+                ￦ 59,800 /개</p>
+            </div>
+            <div class="mid_img3">
+            	<div>
+                <h4><span class="span_red">과일향기</span> 가득,TOYSTORY에서<br>
+                쌀국산 플레이-도를 즐기세요</h4>
+               <h5><span class="span_yellow"> American Play-Doh</span><br>
+                미쿡산 점토 장난감</h5>
+                <p>TOYSTROY <span class="span_red">특별가</span></br>
+                ￦ 30,000</p>
+                </div>
+            </div>
+        </div>
+        <div class="dwb">
+            <div class="mid_img4">
+            	<div>
+                <h4>움직이고 소리나는<br> 무선 조종의 매력을 느껴보세요</h4>
+                <p>더보기</p>
+                </div>
+            
+            </div>
+            <div class="mid_img5">
+               
+                	<div class="center_left">
+                        <h5><span class="span_yellow">smart R2</span>를 만나보세요</h5>
+                        <p><a href="#">자세히보기</a></p>
+                    </div>
+                
+                
+                	<div class="center_right">
+                        <h5>봉제 인형이야말로 진리<br>아이 정서 안정에 강추</h5>
+                        <p><a href="#">자세히보기</a></p>
+                    </div>
+               
+            </div>
+            <div class="mid_img6">
+            	<div>
+                    <h4>아이의 정서 안정에 좋은<br>푹신하고 따듯한 봉제인형을 만나보세요</h4>
+                    <p>더보기</p>
+            	</div>
+            </div>
+    	</div>
+    
+    </article><!--box3 end-->
+    <article class="box4">
+    	<ul>
+    	<li><img src="img/bar_img2.png" alt="와이파이바"></li>
+        <li><p><span>TOYSTORY</span> 가입 후 제공되는 멤버쉽번호(19자리)를 통해 매장에서 무료 와이파이 서비스를 받으실수 있습니다</p></li>
+    	</ul>
+    </article><!--box4 end-->
+    <article class="box5">
+    
+        	<div class="box5_1">
+            		<div class="j1"><img src="img/1choose_img.png" alt="인형뽑기"></div>
+                    <div class="j2"><img src="img/2cafe_img.png" alt="키즈카페"></div>
+                    <div class="j3"><img src="img/3play_img.png" alt="놀이방"></div>
+            </div>
+        
+        
+        	<div class="box5_2">
+            	<h1><strong>KID PLAY TIME</strong></h1>
+                <p>어린이들의 천국</p>
+                <ul>
+                	<li class="btn1"><img src="img/1choose_img.jpg" alt="인형뽑기"></li>
+                	<li class="btn2"><img src="img/2cafe_img.jpg" alt="키즈카페"></li>
+                	<li class="btn3"><img src="img/3play_img.jpg" alt="놀이방"></li>
+            	</ul>
+            </div>
+   		
+        
+        <div class="j_right"></div>
+    
+    </article><!--box5 end-->
+    <article class="box6">
+    	
+        <h5>TOYSTORY 서비스</h5>
+        <p><strong><span>TOYSTORY</span>의 부가서비스를 이용해보세요</strong></p>
+        
+        <ul>
+            <li><img src="img/bot_img1.jpg" alt="상담"></li>
+            <li><img src="img/bot_img2.jpg" alt="사후"></li>
+            <li><img src="img/bot_img3.jpg" alt="배송"></li>
+            <li><img src="img/bot_img4.jpg" alt="대출"></li>
+     
+        
+        </ul>
+    
+    </article><!--box6 end-->
+    
+
+</section>
+
+<footer>
+	<div>
+    	<div>
+        	<h2><img src="img/sub_logo.png" width="100" alt="sublogo"></h2>
+            <ul>
+            	<li><a href="#">회사소개</a></li>
+                <li><a href="#">인재채용</a></li>
+                <li><a href="#">대리점 개설 안내</a></li>
+                <li id="bold_margin"><a href="#">개인정보취급방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">이메일무단수집거부</a></li>
+            </ul>
+            <img src="img/sns.png" alt="sns">
+        </div><!--첫번째 div end-->
+        
+        <div class="footer_p">
+        	<h3>(주)데이라이트</h3>
+        	<address>
+            대표이사 강성문<br>서울시 송파구 오금로 311 (오금동 45-1)
+            </address>
+            <p>사업자등록번호 : 215-86-93600</p>
+            <p>통신판매업신고 : 2009-서울송파-0069호</p>
+            <p>부가통신사업신고필증 : 021129</p>
+            <p id="copy">Copyright (c) 2014 daylight Inc.</p>
+            <div>
+                <img src="img/btn-foot2.gif" alt="">
+                <img src="img/btn-foot3.gif" alt="">
+                <img src="img/btn-foot4.gif" alt="">
+            </div>
+        </div><!--두번째 div end-->
+        
+        <div class="contact">
+        	<h4>CONTACT</h4>
+        	<div>
+            	<h5>고객센터</h5>
+                <h6>1577-5670</h6>
+                <p>평일:09:00~17:30</p>
+                <p>(AS/분헤어이전/제품문의/매장안내)</p>
+            </div>
+            <div id="border_tb">
+            	<h5>대리점구매상담</h5>
+                <h6>1577-9199</h6>
+                <p>월~일:10:00~20:00</p>
+                <p>(제품문의 및 전화구매문의)</p>
+            </div>
+            <div>
+            	<h5>쇼핑몰구매상담</h5>
+                <h6>1588-6792</h6>
+                <p>평일:10:00~18:00</p>
+                <p>(쇼핑몰 제품 및 배송문의)</p>
+                
+            </div>
+            <p>이메일:webmaster@dayright.com</p>
+        </div><!--세번째 div end-->
+        
+    </div>
+</footer>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+	
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/* font-family: 'Nanum Gothic', serif; */
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+/* font-family: 'Nanum Gothic Coding', serif;  */
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+/* font-family: 'Jeju Gothic', serif; */
+
+	
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+	
+/*font-family: 'Noto Sans KR', sans-serif;*/
+html, body {
+  overflow-x: hidden;   /* 가로 스크롤 제거 */
+  overflow-y: auto;     /* 세로 스크롤만 허용 */
+  max-width: 100%;      /* 부모보다 커지지 않게 */
+}
+
+body{ font-family: 'Nanum Gothic', serif;}
+h1,h2,h3,h4,h5,h6{	
+font-family: 'Noto Sans KR', sans-serif;}
+body,h1,h2,h3,h4,h5,h6,p,ul,dl,ol,li,dd,dt,img,form,textarea,input,select,fieldset,label,div{margin:0; padding:0;}
+img{ border:none;}
+a{ text-decoration:none;}
+li{ list-style:none;}
+img,textarea,select,label,input{ vertical-align:middle;}
+
+
+
+
+
+
+
+
+
+
+

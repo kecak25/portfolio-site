@@ -1,0 +1,111 @@
+
+
+/* FAQ */
+/*
+$(document).ready(function(){
+	var _$li=$('div.faq_list>ol>li');
+	_$li.bind('focusin click',function(event){
+		var _idx=$(this).index();
+		_$li.removeClass('on').eq(_idx).addClass('on');
+		return false;
+	});
+});
+*/
+
+function gnbController(mainClass, subClass, sub_subClass){
+
+	var mainChk = $("#listId>li>a"); // 1st for 문에서 length 를 체크할 항목 기준.
+
+	for(var i = 0; i < mainChk.length ; i++){
+		
+		var subChk = $("#listId>li").eq(i); //변수 i 에 따라 대분류 li가 달라진다
+		
+
+			if(subChk.find("a").eq(0).text() == mainClass) { //체크할 항목 "투자정보" 에 도달하면 조건을 건다
+					
+
+				subChk.eq(0).addClass("on");
+
+		
+				for (var z = 0; z < subChk.find("li>a").length; z++){ // 대분류i의 위치에 따른 소분류 length
+
+					var sub_subChk = subChk.find("ul>li").eq(z);
+					
+					if(subChk.find("li>a").eq(z).text() == subClass){
+		
+
+						subChk.find("li").eq(z).addClass("on");
+
+						for (var y = 0; y < sub_subChk.find("li>a").length; y++){
+							
+							if(sub_subChk.find("li>a").eq(y).text() == sub_subClass){
+								sub_subChk.find("li").eq(y).addClass("on");
+							};
+
+						};	
+					};
+					
+				}; 
+					
+			};
+				
+	};
+
+	if($("#listId").find("ul.gnbDepth03").length > 0){
+		
+		$("#listId li").each(function(){
+			
+			if(!$(this).hasClass("on")){ //1depth가 활성화 되지 않은 경우
+			
+				$(this).find("ul").css({height: 0, opacity: 0, overflow:"hidden", padding : "0 0 0 0"});
+				$(this).mouseenter(function(){
+					//2depth만 활성화
+					$(this).find("ul.gnbDepth02").stop(true).animate({height: "auto", opacity: 1, overflow:"visible", padding : "8px 0 30px 0"});
+					//3depth 마우스 오버 이벤트
+					if($(this).find("ul.gnbDepth03").find("li").length > 0){
+						$(this).find("ul.gnbDepth02").find("li").each(function(){
+							$(this).mouseenter(function(){
+								$(this).find("ul.gnbDepth03").stop(true).animate({height: "auto", opacity: 1, overflow:"visible", padding : "8px 0 0 0"});
+							});
+						});
+					}
+				});
+				$(this).mouseleave(function(){
+					$(this).find("ul").stop(true).animate({height: 0, opacity: 0, overflow:"hidden", padding : "0 0 0 0"},200);
+				});
+				
+			}else{                      //1depth가 활성화 된 경우
+				
+				//첫화면 시작 시 전체메뉴 펼쳐지는 현상 막기위해 설정된 css값 변경
+				if($(this).find("ul.gnbDepth03").find("li").length > 0){ //3depth 있는 경우
+					$(this).find("ul.gnbDepth02").animate({height: "auto", opacity: 1, overflow:"visible", padding : "8px 0 0 0"});
+				}else{ 
+					$(this).find("ul.gnbDepth02").animate({height: "auto", opacity: 1, overflow:"visible", padding : "8px 0 30px 0"});
+				}
+				//2depth만 활성화 되지 않은 경우
+				if(!$(this).find("ul.gnbDepth02").hasClass("on")){
+					//3depth 마우스 오버 이벤트
+					if($(this).find("ul.gnbDepth03").find("li").length > 0){
+						$(this).find("ul.gnbDepth02").find("li").each(function(){
+							$(this).mouseenter(function(){
+								$(this).find("ul.gnbDepth03").stop(true).animate({height: "auto", opacity: 1, overflow:"visible", padding : "8px 0 0 0"});
+							});
+						});
+					}
+				}
+			}
+
+		});
+	}
+
+};
+
+//null 또는 공백 이면 alert메시지와 true를 반환한다.
+function nullCheckAlert(str, msg){
+	str = str.replace(/\s/g,"");
+	if("" == str || null == str || "null" == str || "undefined" == str){
+		alert(msg);
+		return true;
+	}
+	return false;
+}

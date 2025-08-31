@@ -1,0 +1,82 @@
+
+@charset "utf-8"; 
+
+/* 상단 롤링 */
+.main_visual	{overflow:hidden; padding-bottom:50px; border-bottom:1px solid #e6e6e6;}
+.main_visual .slider	{width:960px;}
+.main_visual .slider .bx-wrapper	{position:relative;}
+.main_visual .slider .bx-wrapper .bx-viewport	{}
+.main_visual .slider .bx-wrapper .bx-viewport li {font-size:0; line-height:0;height:540px} /*150601 박지민 - height값 설정*/
+.main_visual .slider .bx-wrapper .bx-viewport li img {width:100%;height:100%} /*150601 박지민 - wt,ht값 설정*/
+
+.main_visual .slider .bx-wrapper .bx-controls	{}
+.main_visual .slider .bx-wrapper .bx-controls .bx-default-pager	{display:none}
+
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-direction	{position:absolute; bottom:19px; right:18px; width:45px;}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-direction a	{float:left; display:block; width:20px; height:20px; text-indent:-9999px; vertical-align:middle}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-direction .bx-prev	{background:url('/images/main/icon_banner_prev.gif') no-repeat 0 0}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-direction .bx-next	{margin-left:5px; background:url('/images/main/icon_banner_next.gif') no-repeat 0 0}
+
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto	{position:absolute; bottom:19px; right:68px}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item	{}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item .bx-start	{display:block; width:20px; height:20px; background:url('/images/main/icon_banner_start.gif') no-repeat 0 0; text-indent:-9999px;}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item .bx-stop	{display:block; width:20px; height:20px; background:url('/images/main/icon_banner_stop.gif') no-repeat 0 0; text-indent:-9999px;}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item .bx-start.active	{display:none;}
+.main_visual .slider .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item .bx-stop.active	{display:none;}
+
+/* 한샘링크 */
+.hanssem_link	{overflow:hidden; height:1%}
+.hanssem_link .cont	{float:left; width:455px; padding:25px 25px 25px 0; border-bottom:1px solid #e6e6e6}
+.hanssem_link .cont .fl_left	{width:210px}
+.hanssem_link .cont h2	{margin-top:-6px; color:#262626; font-size:18px; line-height:28px;}
+.hanssem_link .cont p	{color:#a6a6a6; font-size:14px; line-height:24px;}
+.hanssem_link .cont .btn_link	{margin-top:10px}
+.hanssem_link .cont .roll_img	{overflow:hidden; float:right; width:245px; height:171px}
+
+.hanssem_link .cont.nth	{width:455px; padding:25px 0 25px 24px; border-left:1px solid #e6e6e6}
+.hanssem_link .cont.nth .fl_left	{width:209px}
+
+/* 한샘소식_공지사항 */
+.board_list	{overflow:hidden; height:1%; margin-top:34px}
+.board_list .board	{position:relative; float:left; width:457px; height:128px; padding:0 23px 0 0}
+.board_list .board h2	{margin-bottom:8px; color:#262626; font-size:14px; line-height:28px}
+.board_list .board ul	{padding-top:7px; border-top:1px solid #e6e6e6;height:84px;overflow:hidden} /*150601 박지민 - 높이값 속성추가*/
+.board_list .board ul li	{display:inline-block; position:relative; height:28px; color:#262626; font-size:14px; line-height:28px;width: 100%;box-sizing: border-box;} /*150601 박지민 - 라인넓이 속성추가*/
+.board_list .board ul li a	{display:block; padding-right:120px; color:#262626; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}  /*150601 박지민 - 텍스트 줄임코드 추가*/
+.board_list .board ul li .date	{display:inline-block; position:absolute; top:0; right:0; width:110px; color:#262626; font-size:14px; line-height:28px; text-align:right}
+.board_list .board .more	{display:block; position:absolute; top:0; right:23px; width:40px; height:28px; background:url('/images/main/bg_board_more.gif') no-repeat 0 0;}
+.board_list .board.notice	{float:right; width:457px; padding:0 0 0 22px; border-left:1px solid #e6e6e6;overflow:hidden} /*150601 박지민 - overflow속성 추가*/
+.board_list .board.notice .more	{right:0;}
+
+
+/* 배너 */
+.banner_wrap	{overflow:hidden; height:1%; margin-top:33px}
+.banner_wrap .news	{float:left; width:675px;}
+.banner_wrap .news .img	{display:block; font-size:0; line-height:0}
+.banner_wrap .news a	{display:block; font-size:0; line-height:0}
+
+.banner_wrap .fl_right	{width:245px; margin-top:2px;}
+.banner_wrap .fl_right a	{display:block; padding:19px 0 20px 0;}
+.banner_wrap .fl_right a:hover	{text-decoration:none}
+.banner_wrap .fl_right a h2	{color:#262626; font-size:14px; line-height:24px;}
+.banner_wrap .fl_right a p	{color:#a6a6a6; font-size:14px; line-height:24px;}
+
+.banner_wrap .fl_right .blog	{border-top:1px solid #e6e6e6; background:url('/images/main/bg_blog.gif') no-repeat 182px 42px}
+.banner_wrap .fl_right .book	{border-top:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; background:url('/images/main/bg_facebook.gif') no-repeat 186px 38px}
+
+/* 통합로그인 */
+.login_wrap	{margin-top:28px; padding:92px 0 100px 0; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1;}
+.login_wrap h2	{margin-top:0 !important}
+.login_wrap .login	{position:relative; width:497px; margin:22px 0 24px 0; padding:50px 0 0 0; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1;}
+.login_wrap .login dl	{overflow:hidden; width:340px; height:1%; margin:0 0 23px  0}
+.login_wrap .login dl dt	{float:left; width:70px; height:37px; margin-bottom:10px; padding-left:5px; font-size:14px; font-weight:bold; line-height:37px}
+.login_wrap .login dl dd	{float:left; width:264px; height:37px; margin-bottom:10px;}
+.login_wrap .login dl dd input	{padding: 5px 9px 6px 9px;}
+.login_wrap .login .btn_login	{position:absolute; top:50px; right:0; width:145px; height:84px}
+
+.login_wrap .login .help	{margin-left:75px; padding:19px 0 39px 0; border-top:1px solid #e1e1e1;}
+.login_wrap .login .help li	{position:relative; margin-top:4px; color:#262626; font-size:14px; line-height:30px}
+.login_wrap .login .help li:first-child	{margin-top:0}
+.login_wrap .login .help .btn_base	{position:absolute; top:0; right:0}
+
+.login_wrap .login_info	{color:#262626; font-size:14px; line-height:24px;}

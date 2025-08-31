@@ -1,0 +1,13 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*font-family: 'Nanum Gothic', serif;*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+/*font-family: 'Nanum Myeongjo', serif;*/
+body{font-family: 'Nanum Gothic', serif; background-color: #fff;}
+body,h1,h2,h3,h4,h5,h6,p,div,ul,ol,dl,dd,li,img,form,textarea,input,select,fieldset,label{margin:0; padding:0;}/**/
+a{ text-decoration:none; color:#000;}
+li{list-style:none;}
+img,fieldset{border:none;/*익스플로러 보더 생김*/}
+select,input,lable,img,textarea,form{vertical-align:middle;}
+header,main,aside,article,footer,nav,ul {display:block};

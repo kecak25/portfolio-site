@@ -1,0 +1,13 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+body{ font-family: 'Nanum Gothic', serif;}
+body,header,section,footer,ul,li,dl,ol,dt,dd,nav,div,p,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea{
+	margin:0; padding:0;}
+	
+img{ boder:none;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+img,input,textarea,label{ vertical-align:middle;}
+
+.content3_1,.content3_3{ font-family: 'Nanum Myeongjo', serif;}

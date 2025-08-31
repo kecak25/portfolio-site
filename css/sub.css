@@ -1,0 +1,154 @@
+/****************************** 레이어 팝업 ******************************/
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -70px;
+  left: -30px;
+  background: #fff;
+  opacity: 0.9;
+  z-index: 32;
+  display: none;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  background: url("../img/btn_close_me1.png") no-repeat center / 30px 30px;
+  position: fixed;
+  top: 20px;
+  left: 22px;
+  z-index: 999;
+  cursor: pointer;
+  display: none;
+}
+
+.subi {
+  display: none;
+  width: 1400px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 5%;
+  z-index: 450;
+  background-color: #666;
+}
+
+.subi > li {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 500;
+  width: 1190px;
+  background-color: #666;
+}
+
+.subi > div {
+  width: 210px;
+  height: 200px;
+  background-color: #036;
+  position: absolute;
+  top: 200px;
+  right: 0;
+}
+
+.subi > div table td:first-child { font-size: 20px; }
+.subi > div table td:last-child { font-size: 18px; }
+
+.subi > li:last-child {
+  width: 1190px;
+  height: 70px;
+  background-color: #fbdf00;
+  margin-top: 550px;
+}
+
+/****************************** 이모션 블럭 ******************************/
+.emotion {
+  width: 1000px;
+  text-align: center;
+  margin-left: 130px;
+  line-height: 100px;
+}
+
+.emotion p {
+  float: left;
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
+}
+
+.emotion p:first-child {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  border: 1px dotted #000;
+  border-radius: 50%;
+}
+
+.emotion p:nth-child(2),
+.emotion p:nth-child(3) {
+  font-size: 24px;
+  color: #666;
+}
+
+.emotion p:nth-child(2) { border-right: 1px solid #000; }
+
+.emo-border { border-right: 1px solid #000; margin-right: 20px; }
+.hover-underline:hover { text-decoration: underline; }
+
+/****************************** 서브 콘텐츠 ******************************/
+.subi li ul {
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  background: #fff;
+  overflow: auto;
+}
+
+#gregory li,
+#wiseymilk li,
+#libropia li {
+  width: 1084px;
+  height: 750px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+#wemade li {
+  width: 500px;
+  float: left;
+  margin-left: 200px;
+}
+
+/****************************** 리스트 카테고리 *****************
+#list_category {
+  width: 400px;
+  position: fixed;
+  top: 250px;
+  right: -200px;
+}
+
+#list_category h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#list_category li {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+#list_category li:hover { text-decoration: underline; }
+*************/
+
+/****************************** 스크롤바 커스터마이징 ******************************/
+::-webkit-scrollbar { width: 1px; height: 10px; }
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: rgba(0,0,0,0.05);
+}
+::-webkit-scrollbar-track { background: rgba(255,0,0,0.1); }
+::-webkit-scrollbar-thumb { background: rgba(255,0,0,0.1); }

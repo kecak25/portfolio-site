@@ -1,0 +1,274 @@
+
+	//암호화 11
+	var KeyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	function encode(param) {
+		var rtn = "";
+		var chr1, chr2, chr3;
+		var enc1, enc2, enc3, enc4;
+		var i = 0;
+		
+		do {
+			chr1 = param.charCodeAt(i++);
+			chr2 = param.charCodeAt(i++);
+			chr3 = param.charCodeAt(i++);
+			enc1 = chr1 >> 2;
+			enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+			enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+			enc4 = chr3 & 63;
+			
+			if(isNaN(chr2)) {
+				enc3 = enc4 = 64;
+			} else if(isNaN(chr3)) {
+				enc4 = 64;
+			}
+			
+			rtn = rtn + KeyStr.charAt(enc1) + KeyStr.charAt(enc2) + KeyStr.charAt(enc3) + KeyStr.charAt(enc4);
+		} while(i < param.length);
+		
+		return rtn;
+	}
+
+	
+	/**
+	 * 쿠키 반환하기(쿠키이름)<br>
+	 * 회원정보 가져오기<br>
+	 *   &nbsp;1)LG전자 제휴사 대리점코드 정보 = getCookie("partnerId")<br>
+	 * */
+	function getCookie(name){
+	  var sCookieName = name + "=";
+	  var i = 0;
+	  var j;
+	  var endOfCookie;
+	  while ( i <= document.cookie.length )
+	  {
+	    j = (i+sCookieName.length);
+	    if ( document.cookie.substring(i,j) == sCookieName )
+	    {
+	      if ( (endOfCookie=document.cookie.indexOf( ";", j )) == -1 )
+	      {
+	        endOfCookie = document.cookie.length;
+	      }
+	   	  return Base64.decode(document.cookie.substring(j, endOfCookie));
+	    }
+
+	    i = document.cookie.indexOf( " ", i ) + 1;
+	    if (i == 0)
+	    {
+	      break;
+	    }
+	  }
+	  return "";
+	}
+
+	/**
+	 * JSP -> Controller Base64 암복호화 처리 (한글깨짐 해결)
+	 * User : Base64.encode(str);
+	 * 2014.09.23 백승익 추가
+	 * */
+	var Base64 = {		 
+			// private property
+			_keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+		 
+			// public method for encoding
+			encode : function (input) {
+				var output = "";
+				var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+				var i = 0;
+		 
+				input = Base64._utf8_encode(input);
+		 
+				while (i < input.length) { 
+					chr1 = input.charCodeAt(i++);
+					chr2 = input.charCodeAt(i++);
+					chr3 = input.charCodeAt(i++);
+		 
+					enc1 = chr1 >> 2;
+					enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+					enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+					enc4 = chr3 & 63;
+		 
+					if (isNaN(chr2)) {
+						enc3 = enc4 = 64;
+					} else if (isNaN(chr3)) {
+						enc4 = 64;
+					}
+		 
+					output = output +
+					this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+					this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+				}
+				return output;
+			},
+		 
+			// public method for decoding
+			decode : function (input) {
+				var output = "";
+				var chr1, chr2, chr3;
+				var enc1, enc2, enc3, enc4;
+				var i = 0;
+		 
+				input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+		 
+				while (i < input.length) {
+					enc1 = this._keyStr.indexOf(input.charAt(i++));
+					enc2 = this._keyStr.indexOf(input.charAt(i++));
+					enc3 = this._keyStr.indexOf(input.charAt(i++));
+					enc4 = this._keyStr.indexOf(input.charAt(i++));
+		 
+					chr1 = (enc1 << 2) | (enc2 >> 4);
+					chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+					chr3 = ((enc3 & 3) << 6) | enc4;
+		 
+					output = output + String.fromCharCode(chr1);
+		 
+					if (enc3 != 64) {
+						output = output + String.fromCharCode(chr2);
+					}
+					if (enc4 != 64) {
+						output = output + String.fromCharCode(chr3);
+					}
+				}
+				output = Base64._utf8_decode(output);
+				return output;
+			},
+		 
+			// private method for UTF-8 encoding
+			_utf8_encode : function (string) {
+				string = string.replace(/\r\n/g,"\n");
+				var utftext = "";
+		 
+				for (var n = 0; n < string.length; n++) {
+					var c = string.charCodeAt(n);
+					if (c < 128) {
+						utftext += String.fromCharCode(c);
+					}
+					else if((c > 127) && (c < 2048)) {
+						utftext += String.fromCharCode((c >> 6) | 192);
+						utftext += String.fromCharCode((c & 63) | 128);
+					}
+					else {
+						utftext += String.fromCharCode((c >> 12) | 224);
+						utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+						utftext += String.fromCharCode((c & 63) | 128);
+					}
+				}
+				return utftext;
+			},
+		 
+			// private method for UTF-8 decoding
+			_utf8_decode : function (utftext) {
+				var string = "";
+				var i = 0;
+				var c = c1 = c2 = 0;
+		 
+				while ( i < utftext.length ) {
+					c = utftext.charCodeAt(i);
+					if (c < 128) {
+						string += String.fromCharCode(c);
+						i++;
+					}
+					else if((c > 191) && (c < 224)) {
+						c2 = utftext.charCodeAt(i+1);
+						string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+						i += 2;
+					}
+					else {
+						c2 = utftext.charCodeAt(i+1);
+						c3 = utftext.charCodeAt(i+2);
+						string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+						i += 3;
+					}
+				}
+				return string;
+			}
+	};
+
+	//화면중앙에 팝업띄우기
+	function popupOpenInCenter(url, popupName , width, height) {
+		var LeftPosition = (screen.availWidth/2) - (width/2);
+		var TopPosition = (screen.availHeight/2) - (height/2);
+		return window.open(url, popupName, "left="+LeftPosition+",top="+TopPosition+",width="+width+",height="+height);
+	}
+	
+	function showProgressBar() {
+		if($("#progress").length == 0) {
+			var $div = $("<div>").attr("id","progress")
+						.attr("name","progress")
+						.css("width","100%")
+						.css("height","100%")
+						.css("background-color","#eeeeee")
+						.css("position","absolute")
+						.css("left","0")
+						.css("top","0")
+						.css("filter","alpha(opacity=50)")
+						.css("opacity","0.5")
+			;
+			$div.appendTo("body");
+		} else {
+			$("#progress").show();
+		}
+	}
+	function hideProgressBar() {
+		if($("#progress").length != 0) {
+			$("#progress").hide();
+		}
+	}
+	
+	// 공통코드를 조회해서 콤보를 만든다.
+	function fncMakeCombo(searchOption) {
+		searchOption["type"] = "combo";
+		fncGetCommonCode(searchOption);
+	}
+	// 콤보그리기
+	function fncDrawCombo(searchOption, codeList) {
+		var $combo = $("#"+searchOption.comboId).html("");
+		var options = "";
+		
+		for(var i = 0; i < codeList.length; i++) {
+			var option = "";
+			if(searchOption["defaultStr"] != undefined) {
+				option = "<option value=''>" + searchOption["defaultStr"] + "</option>\n";
+			}
+			option = "<option value='"+codeList[i]["CODE"]+"'>" + codeList[i]["CODE_NAME"] + "</option>\n";
+			options += option;
+		}
+		$combo.html(options);
+	}
+	
+	
+	//공통코드 조회
+	// async가 true일경우에는 thread하게 날아감, 이전콤보값이 후단에 영향을 미쳐야하는경우 asyn는 false로 세팅해서 호출해야함
+	// fncMakeCombo({"comboId":"CONTEXT_TYPE", "CODE_TYPE":"FAQ", "async":false}); ==> 콤보세팅후 이후로직호출
+	function fncGetCommonCode(searchOption) {
+		var asyncType = true;
+		if(searchOption["async"] != undefined) asyncType = searchOption["async"];
+		
+		var CODE_TYPE = searchOption.CODE_TYPE;
+		var option = {
+			 url	: "/common/getCode?CODE_TYPE="+CODE_TYPE
+			,type 	: 'get'
+			,dataType : 'json'
+			,async	 : asyncType
+			,success : function(data){
+				if(data.resMap.rtnCode == "-9999") {
+					var alertStr = "처리중 실패하였습니다. 아래내용을 관리자에게 문의하세요\n" + data.resMap.msg; 
+					alert(alertStr);
+				} else {
+					if(data.resMap.rtnCode == "0") {
+						if(searchOption.type == "combo") {
+							fncDrawCombo(searchOption, data.resMap.codeList);
+						}
+						
+					} else {
+						alert("아래 에러코드에 대해 관리자에게 문의하세요\n[" + data.resMap.msg +"]");
+					}
+				}
+			}
+			,error : function(data){
+				alert("처리 실패!!");
+			}
+		};
+		$("#frmSend").ajaxSubmit(option);
+
+	}
+	

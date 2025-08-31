@@ -1,0 +1,38 @@
+@media all and (max-width:767px){
+
+
+.banner ul{ width:100%; margin:5px auto;}
+.banner ul li{ width:97%; height:230px; margin:0 auto; background-size:100%ss;}
+
+.sbox1{ background:url(../img/sub_01.jpg) center top no-repeat;}
+.sbox2{ background:url(../img/sub_02.jpg) center top no-repeat;}
+.sbox3{ background:url(../img/sub_03.jpg) center top no-repeat;}
+.sbox4{ background:url(../img/sub_04.jpg) center top no-repeat;}
+.sbox1:hover,.sbox2:hover,.sbox3:hover,.sbox4:hover{ border:#CCC solid 1px; box-sizing:border-box;}	
+}
+
+@media all and (min-width:768px) and (max-width:1024px) {
+
+
+.banner ul{ width:100%; margin:10px 0;}
+.banner ul li{ width:49%; height:210px; float:left; margin:0.3%; background-size:auto;}
+
+.sbox1{ background:url(../img/sub_01.jpg) center top no-repeat;}
+.sbox2{ background:url(../img/sub_02.jpg) center top no-repeat;}
+.sbox3{ background:url(../img/sub_03.jpg) center top;}
+.sbox4{ background:url(../img/sub_04.jpg) center top;}
+.sbox1:hover,.sbox2:hover,.sbox3:hover,.sbox4:hover{ border:#CCC solid 1px; box-sizing:border-box;}
+}
+
+@media all and (min-width:1025px) {
+
+
+.banner ul{ width:100%; margin:10px 0;}
+.banner ul li{ width:24%; height:200px; float:left; margin:0.3%; background-size:auto;}
+
+.sbox1{ background:url(../img/sub_01.jpg) center top no-repeat;}
+.sbox2{ background:url(../img/sub_02.jpg) center top no-repeat;}
+.sbox3{ background:url(../img/sub_03.jpg) center top no-repeat;}
+.sbox4{ background:url(../img/sub_04.jpg) center top no-repeat;}
+.sbox1:hover,.sbox2:hover,.sbox3:hover,.sbox4:hover{ border:#CCC solid 1px; box-sizing:border-box;}
+}
