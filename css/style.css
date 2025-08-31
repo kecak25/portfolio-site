@@ -208,7 +208,7 @@ img { display: block; }
 #TOP.LOAD { top: 0; opacity: 1; }
 #TOP .LIST > LI {
   float: left;
-  width: 250px; margin:0; /* margin: 0 132px 56px 0; */
+  width: 250px; margin: 0 132px 56px 0; /* margin: 0 132px 56px 0; */
   line-height: 24px; letter-spacing: 2px;
   color: #fff;
 }
@@ -451,9 +451,15 @@ input, textarea {
 
 /* 이하 구조 동일 — 중복 최적화만 반영 */
     
-    
-    
+
+  #TOP .LIST > LI {
+    width: 100% !important;  /* ✅ 모바일에서는 화면 전체 */
+    margin: 0 0 20px 0 !important;
+  }
 }
+   
+    
+
 
 /* ===========================
    공통페이지
