@@ -24,7 +24,7 @@ li { list-style-type:none; } /* ✅ 오타 수정 */
 
 img { display:block; }
 
-/*기존
+/*기존*/
 .FORPC { display:none; }
 .FORSP { display:block; }
 
