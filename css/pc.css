@@ -105,7 +105,7 @@ img { display: block; }
 }
 #ME .RIGHT .FLOAT a { text-decoration: underline; }
 
-/* 반응형 */
+/* 반응형 
 @media (max-width: 780px) {
   #ME .LEFT { width: 510px; }
   #ME .RIGHT {
@@ -115,7 +115,7 @@ img { display: block; }
   }
   #ME .RIGHT p { margin: 0; }
 }
-
+*/
 /* FIX AREA (배경) */
 #FIX_AREA_H {
   position: fixed; top: 0; left: 0;
