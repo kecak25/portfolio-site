@@ -208,7 +208,7 @@ img { display: block; }
 #TOP.LOAD { top: 0; opacity: 1; }
 #TOP .LIST > LI {
   float: left;
-  width: 250px; margin: 0 132px 56px 0;
+  width: 250px; margin:0; /* margin: 0 132px 56px 0; */
   line-height: 24px; letter-spacing: 2px;
   color: #fff;
 }
