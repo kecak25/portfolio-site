@@ -26,12 +26,12 @@ img { display:block; }
 
 /*기존
 .FORPC { display:none; }
-.FORSP { display:block; } */
+.FORSP { display:block; }
 
-/* 수정 */
+/* 수정
 .FORPC { display:block; }
 .FORSP { display:none; }
-
+ */
 input, textarea {
   -webkit-appearance:none;
   -webkit-border-radius:0;
