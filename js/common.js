@@ -51,20 +51,35 @@ function LOGO_AREA() {
 // 리스트 hover / touch 효과
 function LIST_HOVER() {
   if (_ua.Mobile) {
-    //  모바일: hover 대신 touch 이벤트 사용
-    $(".JS-LIST_HOVER li img").on("touchstart", function () {
-      const o = $(this);
-      const s = o.parents("li").attr("list");
-      $("#WRAPPER").removeClass().addClass(`${s} ON`);
-      o.parents("li").addClass("ON");
-    });
+    let tapped = null; // 마지막 터치한 요소 기억
 
-    $(".JS-LIST_HOVER li img").on("touchend touchcancel", function () {
-      $("#WRAPPER").removeClass("ON");
-      $(this).parents("li").removeClass("ON");
+    $(".JS-LIST_HOVER li a").on("touchstart", function (e) {
+      const li = $(this).parents("li");
+      const s = li.attr("list");
+
+      if (tapped === this) {
+        // 두 번째 터치 → 링크 실행 허용
+        tapped = null; // 초기화
+        return true;   // a.PJAX 기본 클릭 실행됨
+      } else {
+        // 첫 번째 터치 → hover 효과만
+        e.preventDefault(); // 기본 클릭 막음
+        tapped = this;      // 이 요소 기억
+
+        // 기존 hover 효과처럼 처리
+        $("#WRAPPER").removeClass().addClass(`${s} ON`);
+        li.addClass("ON");
+
+        // 일정 시간(예: 1.2초) 지나면 hover 풀림 + 다시 처음처럼
+        setTimeout(() => {
+          tapped = null;
+          $("#WRAPPER").removeClass("ON");
+          li.removeClass("ON");
+        }, 1200);
+      }
     });
   } else {
-    //  PC: 기존 hover 이벤트 그대로
+    // PC: 기존 hover 유지
     $(".JS-LIST_HOVER li img").hover(
       function () {
         const o = $(this);
