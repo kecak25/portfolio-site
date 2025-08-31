@@ -1,5 +1,5 @@
-@import url(./pc.css) screen and (min-width:469px);
-@import url(./sp.css) screen and (max-width:468px);
+@import url(./pc.css) screen and (min-width:769px);
+@import url(./sp.css) screen and (max-width:768px);
 
 /* 배경 스크롤 방지 */
 body.modal-open {
