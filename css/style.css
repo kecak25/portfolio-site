@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =======================
-   공통 스타일 (기본 style.css)
+   공통 스타일 (style.css)
 ======================= */
 
 /* 배경 스크롤 방지 */
@@ -30,7 +30,7 @@ body.modal-open {
    Modal 팝업
 =========================== */
 .modal {
-  display: none; /* 기본 숨김 */
+  display: none;
   position: fixed;
   z-index: 29999;
   left: 0; top: 0;
@@ -69,7 +69,6 @@ body.modal-open {
   background: #000;
   border-radius: 5px;
 }
-
 .main-swiper .swiper-slide iframe {
   width: 100%;
   height: 100%;
@@ -77,14 +76,12 @@ body.modal-open {
   display: block;
   overflow: hidden;
 }
-
 .main-swiper .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
 }
-
 .main-swiper .swiper-slide img {
   width: 90%;
   height: auto;
@@ -99,14 +96,12 @@ body.modal-open {
   object-position: top;
   box-sizing: border-box;
 }
-
 .thumbs-swiper .swiper-slide {
   width: 25%;
   height: 100%;
   opacity: 0.5;
   overflow: hidden;
 }
-
 .thumbs-swiper .swiper-slide-thumb-active {
   opacity: 1;
 }
@@ -244,41 +239,6 @@ body.modal-open {
     font-size: 12px; line-height: 24px;
   }
   #ME .RIGHT .FLOAT a { text-decoration: underline; }
-
-  /* 반응형 */
-  @media (max-width: 780px) {
-    #ME .LEFT { width: 510px; }
-    #ME .RIGHT {
-      clear: both; float: none;
-      width: 90%; max-width: 480px;
-      padding: 0 0 44px 50px;
-    }
-    #ME .RIGHT p { margin: 0; }
-  }
-
-  /* FIX AREA */
-  #FIX_AREA_H {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 10;
-    background-position: center; background-size: cover;
-    transform: scale(1.2);
-  }
-  .ON #FIX_AREA_H { transform: scale(1.1); }
-  #FIX_AREA_H.ON,
-  .CHILD #FIX_AREA_H { transform: scale(1); }
-
-  #FIX_AREA_H::after {
-    content: ""; position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #fff;
-    transition: all .5s cubic-bezier(.19,1,.22,1);
-  }
-  .ON #FIX_AREA_H::after,
-  .CHILD #FIX_AREA_H::after { opacity: 0; }
-
-  /* 프로젝트별 배경 
-   */
 }
 
 /* =======================
@@ -312,10 +272,6 @@ body.modal-open {
     -webkit-border-radius:0;
     border-radius:0;
   }
-
-  .TRA07 { transition:all 700ms cubic-bezier(0.190, 1.000, 0.220, 1.000); }
-  .TRA10 { transition:all 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000); }
-  .TRA15 { transition:all 1500ms cubic-bezier(0.190, 1.000, 0.220, 1.000); }
 
   #WRAPPER { width:100%; overflow:scroll; -webkit-overflow-scrolling:touch; }
   .NOSCROLL #WRAPPER { overflow:hidden; }
