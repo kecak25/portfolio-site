@@ -158,7 +158,7 @@ input, textarea {
   content:"";
   width:100%; height:100%;
   position:absolute; top:0; left:0;
-  background-color:#fff;
+  background-color:transparent; /*fff->transparent */
   transition:all 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 .ON #FIX_AREA_H:after, .CHILD #FIX_AREA_H:after { opacity:0; }
