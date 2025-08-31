@@ -278,16 +278,7 @@ body.modal-open {
   .CHILD #FIX_AREA_H::after { opacity: 0; }
 
   /* 프로젝트별 배경 
-  .P1 #FIX_AREA_H { background-image: url("./img/pic_p1_kv.jpg"); }
-  .P2 #FIX_AREA_H { background-image: url("./img/ui/milk.jpg"); }
-  .P3 #FIX_AREA_H { background-image: url("./img/ui/OWL.jpg"); }
-  .P4 #FIX_AREA_H { background-image: url("./img/evt/wemade2.jpg"); }
-  .P5 #FIX_AREA_H { background-image: url("./img/illust/volvo1.jpg"); }
-  .P6 #FIX_AREA_H { background-image: url("./img/html5/iphone3.jpg"); }
-  .P7 #FIX_AREA_H { background-image: url("./img/html5/han1.jpg"); }
-  .P8 #FIX_AREA_H { background-image: url("./img/html5/suz.jpg"); }
-  .P15 #FIX_AREA_H { background-image: url("./img/evt/lin15.jpg"); }
-  .P16 #FIX_AREA_H { background-image: url("./img/ui/gregory_page.jpg"); background-position: 0 40px; } */
+   */
 }
 
 /* =======================
