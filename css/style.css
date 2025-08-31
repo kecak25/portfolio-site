@@ -453,7 +453,7 @@ input, textarea {
     
 
   #TOP .LIST > LI {
-    width: 100% !important;  /* ✅ 모바일에서는 화면 전체 */
+    
     margin: 0 0 20px 0 !important;
   }
 }
