@@ -5,7 +5,7 @@
 /* ===========================
    pc
 =========================== */
-@media only screen and (min-width:768px) {
+@media only screen and (min-width:465px) {
     
  
 /* 기본 세팅 */
@@ -281,7 +281,7 @@ img { display: block; }
 /* ===========================
    mobile
 =========================== */
-@media only screen and (max-width:769px) {
+@media only screen and (max-width:466px) {
     
     
 
